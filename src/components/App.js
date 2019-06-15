@@ -1,21 +1,14 @@
 import React from 'react'
+import { Line } from 'react-chartjs-2'
+import { chartData, chartOptions } from '../config/chart'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Bike parking fee by hours</h1>
+      <div>
+        <Line data={chartData} options={chartOptions} height={400} />
+      </div>
     </div>
   )
 }
