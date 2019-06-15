@@ -18,6 +18,12 @@
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test --watchAll=false",
+      "pre-push": "yarn deploy"
+    }
+  },
   "prettier": {
     "trailingComma": "es5",
     "semi": false,
@@ -53,6 +59,7 @@
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-prettier": "^3.1.0",
     "gh-pages": "^2.0.1",
+    "husky": "^2.4.1",
     "prettier": "^1.18.2"
   }
 }
