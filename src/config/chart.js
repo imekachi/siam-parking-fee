@@ -1,4 +1,5 @@
 import { calculateFee } from '../operations/fee'
+import COLORS from './colors'
 import { parkingInfo } from './parking'
 
 const MAX_OVERVIEW_HOURS = 10
@@ -54,8 +55,19 @@ export const chartOptions = {
   scales: {
     yAxes: [
       {
+        gridLines: {
+          color: COLORS.GRID,
+          zeroLineColor: COLORS.GRID,
+        },
         ticks: {
           beginAtZero: true,
+        },
+      },
+    ],
+    xAxes: [
+      {
+        gridLines: {
+          color: COLORS.GRID,
         },
       },
     ],
