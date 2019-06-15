@@ -2,7 +2,7 @@ import { calculateFee } from '../operations/fee'
 import COLORS from './colors'
 import { parkingInfo } from './parking'
 
-const MAX_OVERVIEW_HOURS = 10
+const MAX_OVERVIEW_HOURS = 8
 
 export const OVERVIEW_HOURS_ARRAY = Array.from(
   // make array-like object that have specific length property
