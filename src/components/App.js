@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <h1 className="header">Bike parking fee by hours</h1>
-      <div>
+      <div className="chart-container">
         <Line data={chartData} options={chartOptions} height={400} />
       </div>
     </div>
