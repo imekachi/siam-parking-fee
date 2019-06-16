@@ -47,7 +47,7 @@ export const chartOptions = {
   legend: {
     position: 'bottom',
     labels: {
-      boxWidth: 10,
+      boxWidth: 5,
       padding: 20,
       usePointStyle: true,
     },

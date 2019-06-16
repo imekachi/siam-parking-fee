@@ -50,3 +50,24 @@ export function calculateFee(feeRates, parkedHrs = 1) {
 
   return totalCost
 }
+
+export const storage = {
+  key: 'PARKING_TIME_START',
+  store: function(data) {
+    localStorage.setItem(this.key, JSON.stringify(data))
+  },
+  getData: function() {
+    const rawData = localStorage.getItem(this.key)
+    if (!rawData) return {}
+
+    const parsedData = JSON.parse(rawData)
+
+    return {
+      ...parsedData,
+      start: new Date(parsedData.start),
+    }
+  },
+  reset: function() {
+    localStorage.removeItem(this.key)
+  },
+}
