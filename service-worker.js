@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/siam-parking-fee/precache-manifest.20c9b5b42e385548f5297547982f75bf.js"
+  "/siam-parking-fee/precache-manifest.4345d656ae8d700db159c3111607494b.js"
 );
 
 self.addEventListener('message', (event) => {
