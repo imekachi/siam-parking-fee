@@ -1,6 +1,6 @@
 import COLORS from './colors'
 
-export const parkingInfo = {
+export const parkConfig = {
   MBK: {
     name: 'MBK',
     color: COLORS.RED,
@@ -17,3 +17,5 @@ export const parkingInfo = {
     feeRates: [{ hrs: 4, cost: 10 }, { hrs: 1, cost: 20 }],
   },
 }
+
+export const parkConfigEntries = Object.entries(parkConfig)

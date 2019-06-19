@@ -1,6 +1,6 @@
 import { calculateFee } from '../operations/fee'
 import COLORS from './colors'
-import { parkingInfo } from './parking'
+import { parkConfig } from './park'
 
 const MAX_OVERVIEW_HOURS = 8
 
@@ -16,12 +16,12 @@ export const OVERVIEW_HOURS_ARRAY = Array.from(
  * { placeName: [array of fee by hours of parking] }
  * @type {Object}
  */
-export const feeOverview = Object.values(parkingInfo).map(parking => {
+export const feeOverview = Object.values(parkConfig).map(park => {
   return {
-    label: parking.name,
-    data: OVERVIEW_HOURS_ARRAY.map(hours => calculateFee(parking.feeRates, hours)),
-    borderColor: parking.color,
-    backgroundColor: parking.color,
+    label: park.name,
+    data: OVERVIEW_HOURS_ARRAY.map(hours => calculateFee(park.feeRates, hours)),
+    borderColor: park.color,
+    backgroundColor: park.color,
     fill: false,
   }
 })
