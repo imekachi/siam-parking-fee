@@ -114,7 +114,7 @@ function App() {
         </>
       ) : (
         <button
-          className="floating-button"
+          className="floating-button _prevent-selection"
           style={{ backgroundColor: COLORS.PURPLE }}
           onClick={onClickPark}
         >
@@ -130,7 +130,12 @@ function App() {
             <div className="popup-header">Where are you parking at?</div>
             <ul className="park-list">
               {parkConfigEntries.map(([key, info]) => (
-                <li key={key} data-park-id={key} className="park-list-item" onClick={onChoosePark}>
+                <li
+                  key={key}
+                  data-park-id={key}
+                  className="park-list-item _prevent-selection"
+                  onClick={onChoosePark}
+                >
                   {info.name}
                 </li>
               ))}

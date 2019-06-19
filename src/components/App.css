@@ -20,13 +20,6 @@
 	bottom: 60px;
 	z-index: 10;
 
-	width: 128px;
-	height: 60px;
-	border-radius: 30px;
-	border: 0 none;
-	outline: 0 none;
-	cursor: pointer;
-
 	margin: auto;
 	display: flex;
 	align-items: center;
@@ -37,6 +30,13 @@
 	line-height: 1;
 	color: #000;
 	text-transform: uppercase;
+
+	width: 128px;
+	height: 60px;
+	border-radius: 30px;
+	border: 0 none;
+	outline: 0 none;
+	cursor: pointer;
 }
 
 .floating-button > i {
@@ -56,7 +56,7 @@ body {
 .parking-info-container {
 	background-color: #1D1D1D;
 	margin-top: 12px;
-	padding: 16px;
+	padding: 24px;
 	border-radius: var(--radius);
 }
 
@@ -75,8 +75,8 @@ body {
 	justify-content: space-between;
 	align-items: center;
 	border-top: 1px solid rgba(255, 255, 255, 0.2);
-	margin-top: 16px;
-	padding-top: 16px;
+	margin-top: 24px;
+	padding-top: 24px;
 }
 
 .park-info > .label {
@@ -131,4 +131,9 @@ body {
 .park-list-item:hover {
 	background-color: rgba(255, 255, 255, 0.1);
 	border-radius: var(--radius);
+}
+
+._prevent-selection {
+	user-select: none;
+	-webkit-tap-highlight-color: transparent;
 }
