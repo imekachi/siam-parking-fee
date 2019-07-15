@@ -9,7 +9,7 @@ import './App.css'
 import ParkingInfo from './ParkingInfo'
 import PopUpChoosePark from './PopUpChoosePark'
 
-const defaultState = { isChoosingPark: false }
+const defaultState = { isChoosingPark: false, isRendered: false }
 
 function App() {
   const [state, setState] = useState(defaultState)
@@ -54,27 +54,56 @@ function App() {
     setState(defaultState)
   }
 
+  const onClickLiveButton = () => {
+    // determine current state of isLive
+    const isLive = !state.isLive
+    // prepare previous data
+    const prevData = storage.getData()
+    // update isLive data in storage
+    storage.store({ ...prevData, isLive })
+    // update isLive data in react state
+    setState({ ...state, isLive })
+  }
+
   // This intended to run on the first mount ONLY
   // to display current park state if exist
   useEffect(() => {
-    const { start, parkId } = storage.getData()
+    const { start, parkId, isLive: storageIsLive } = storage.getData()
     if (!start) return
 
-    const currentDuration = getDurationHrs(start)
     const parkInfo = parkConfig[parkId]
 
-    setState({
-      ...state,
-      park: {
-        start,
-        name: parkInfo.name,
-        color: parkInfo.color,
-        durationHrs: currentDuration,
-        fee: calculateFee(parkInfo.feeRates, currentDuration),
-      },
-    })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    // create update state function
+    // that receives option object
+    // with default value of isLive is from state
+    const updateState = ({ isLive = state.isLive } = {}) => {
+      const currentDuration = getDurationHrs(start)
+      setState({
+        ...state,
+        isLive,
+        isRendered: true,
+        park: {
+          start,
+          name: parkInfo.name,
+          color: parkInfo.color,
+          durationHrs: currentDuration,
+          fee: calculateFee(parkInfo.feeRates, currentDuration),
+        },
+      })
+    }
+
+    let timeoutId
+    if (state.isLive) {
+      timeoutId = setTimeout(updateState, 1000)
+    } else if (!state.isRendered) {
+      // first render only, use isLive from storage
+      updateState({ isLive: storageIsLive })
+    }
+
+    return () => {
+      clearTimeout(timeoutId)
+    }
+  }, [state])
 
   return (
     <div className="App">
@@ -87,7 +116,11 @@ function App() {
       {/* PARK INFO */}
       {state.park ? (
         <>
-          <ParkingInfo {...state.park} />
+          <ParkingInfo
+            {...state.park}
+            isLive={state.isLive}
+            onClickLiveButton={onClickLiveButton}
+          />
           <button
             className="floating-button"
             style={{ backgroundColor: COLORS.YELLOW }}

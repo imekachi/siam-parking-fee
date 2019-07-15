@@ -1,8 +1,36 @@
 .parking-info-container {
+  position: relative;
   background-color: #1D1D1D;
   margin-top: 12px;
   padding: 24px;
   border-radius: var(--radius);
+}
+
+.live-button {
+  position: absolute;
+  top: 30px;
+  right: 24px;
+  width: 42px;
+  height: 18px;
+  font-size: 10px;
+  background-color: #636363;
+  color: #ffffff;
+  border-radius: 10px;
+  box-shadow: none;
+  border: 0 none;
+  outline: 0 none;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+@keyframes pulse {
+  0% { background-color: #ff4a48 }
+  50% { background-color: #9C3333 }
+  100% { background-color: #ff4a48 }
+}
+.live-button.-live {
+  opacity: 1;
+  animation: pulse 1s infinite ease-in-out;
 }
 
 .parking-at {
