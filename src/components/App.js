@@ -50,17 +50,19 @@ function App() {
   }
 
   const onClickReset = () => {
+    // we will remove storage data but we want to keep "isLive" setting
+    const { isLive } = storage.getData()
     storage.reset()
+    // save "isLive" back into storage
+    storage.store({ isLive })
     setState(defaultState)
   }
 
   const onClickLiveButton = () => {
     // determine current state of isLive
     const isLive = !state.isLive
-    // prepare previous data
-    const prevData = storage.getData()
     // update isLive data in storage
-    storage.store({ ...prevData, isLive })
+    storage.store({ isLive })
     // update isLive data in react state
     setState({ ...state, isLive })
   }
@@ -69,7 +71,7 @@ function App() {
   // to display current park state if exist
   useEffect(() => {
     const { start, parkId, isLive: storageIsLive } = storage.getData()
-    if (!start) return
+    if (!start) return undefined
 
     const parkInfo = parkConfig[parkId]
 
