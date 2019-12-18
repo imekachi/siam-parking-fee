@@ -1,15 +1,22 @@
 {
   "files": {
-    "main.css": "/siam-parking-fee/static/css/main.cd06dee1.chunk.css",
-    "main.js": "/siam-parking-fee/static/js/main.a28d00f6.chunk.js",
-    "main.js.map": "/siam-parking-fee/static/js/main.a28d00f6.chunk.js.map",
-    "runtime~main.js": "/siam-parking-fee/static/js/runtime~main.1f52f072.js",
-    "runtime~main.js.map": "/siam-parking-fee/static/js/runtime~main.1f52f072.js.map",
-    "static/js/2.63f746f1.chunk.js": "/siam-parking-fee/static/js/2.63f746f1.chunk.js",
-    "static/js/2.63f746f1.chunk.js.map": "/siam-parking-fee/static/js/2.63f746f1.chunk.js.map",
+    "main.css": "/siam-parking-fee/static/css/main.0adc2514.chunk.css",
+    "main.js": "/siam-parking-fee/static/js/main.6fbbc186.chunk.js",
+    "main.js.map": "/siam-parking-fee/static/js/main.6fbbc186.chunk.js.map",
+    "runtime-main.js": "/siam-parking-fee/static/js/runtime-main.10913de8.js",
+    "runtime-main.js.map": "/siam-parking-fee/static/js/runtime-main.10913de8.js.map",
+    "static/js/2.50b0af0f.chunk.js": "/siam-parking-fee/static/js/2.50b0af0f.chunk.js",
+    "static/js/2.50b0af0f.chunk.js.map": "/siam-parking-fee/static/js/2.50b0af0f.chunk.js.map",
     "index.html": "/siam-parking-fee/index.html",
-    "precache-manifest.0a5e61f5049c314c9749bb3a4e22d621.js": "/siam-parking-fee/precache-manifest.0a5e61f5049c314c9749bb3a4e22d621.js",
+    "precache-manifest.7d809fb960cf1ab4ecce11705893baa5.js": "/siam-parking-fee/precache-manifest.7d809fb960cf1ab4ecce11705893baa5.js",
     "service-worker.js": "/siam-parking-fee/service-worker.js",
-    "static/css/main.cd06dee1.chunk.css.map": "/siam-parking-fee/static/css/main.cd06dee1.chunk.css.map"
-  }
+    "static/css/main.0adc2514.chunk.css.map": "/siam-parking-fee/static/css/main.0adc2514.chunk.css.map",
+    "static/js/2.50b0af0f.chunk.js.LICENSE": "/siam-parking-fee/static/js/2.50b0af0f.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.10913de8.js",
+    "static/js/2.50b0af0f.chunk.js",
+    "static/css/main.0adc2514.chunk.css",
+    "static/js/main.6fbbc186.chunk.js"
+  ]
 }
