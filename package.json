@@ -4,11 +4,11 @@
   "homepage": "https://imekachi.github.io/siam-parking-fee/",
   "private": true,
   "dependencies": {
-    "chart.js": "^2.8.0",
-    "react": "^16.8.6",
-    "react-chartjs-2": "^2.7.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "chart.js": "^2.9.3",
+    "react": "^16.12.0",
+    "react-chartjs-2": "^2.8.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "3.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -56,11 +56,11 @@
     ]
   },
   "devDependencies": {
-    "eslint-config-prettier": "^4.3.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "gh-pages": "^2.0.1",
-    "husky": "^2.4.1",
-    "prettier": "^1.18.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "gh-pages": "^2.1.1",
+    "husky": "^3.1.0",
+    "prettier": "^1.19.1",
     "prop-types": "^15.7.2"
   }
 }
