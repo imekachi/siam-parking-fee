@@ -21,7 +21,7 @@ export const parkConfig = {
     name: 'Siam Center',
     color: COLORS.GREEN,
     feeRates: [
-      { hrs: 4, cost: 10 },
+      { hrs: 2, cost: 20 },
       { hrs: 1, cost: 20 },
     ],
   },
