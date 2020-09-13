@@ -16,10 +16,10 @@ export const OVERVIEW_HOURS_ARRAY = Array.from(
  * { placeName: [array of fee by hours of parking] }
  * @type {Object}
  */
-export const feeOverview = Object.values(parkConfig).map(park => {
+export const feeOverview = Object.values(parkConfig).map((park) => {
   return {
     label: park.name,
-    data: OVERVIEW_HOURS_ARRAY.map(hours => calculateFee(park.feeRates, hours)),
+    data: OVERVIEW_HOURS_ARRAY.map((hours) => calculateFee(park.feeRates, hours)),
     borderColor: park.color,
     backgroundColor: park.color,
     fill: false,
@@ -27,7 +27,7 @@ export const feeOverview = Object.values(parkConfig).map(park => {
 })
 
 export const chartData = {
-  labels: OVERVIEW_HOURS_ARRAY.map(hour => `${hour} hr${hour > 1 ? 's' : ''}`),
+  labels: OVERVIEW_HOURS_ARRAY.map((hour) => `${hour} hr${hour > 1 ? 's' : ''}`),
   datasets: feeOverview,
 }
 

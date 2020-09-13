@@ -22,7 +22,7 @@ function App() {
     })
   }
 
-  const onChoosePark = event => {
+  const onChoosePark = (event) => {
     const element = event.target
     const parkId = element.dataset.parkId
 

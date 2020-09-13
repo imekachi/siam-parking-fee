@@ -23,35 +23,86 @@ describe('calculateFee()', () => {
       output: 10,
     },
     {
-      input: [[{ hrs: 2, cost: 10 }, { hrs: 1, cost: 20 }], 3],
+      input: [
+        [
+          { hrs: 2, cost: 10 },
+          { hrs: 1, cost: 20 },
+        ],
+        3,
+      ],
       output: 30,
     },
     {
-      input: [[{ hrs: 2, cost: 10 }, { hrs: 1, cost: 20 }], 4],
+      input: [
+        [
+          { hrs: 2, cost: 10 },
+          { hrs: 1, cost: 20 },
+        ],
+        4,
+      ],
       output: 50,
     },
     {
-      input: [[{ hrs: 4, cost: 10 }, { hrs: 1, cost: 20 }], 4],
+      input: [
+        [
+          { hrs: 4, cost: 10 },
+          { hrs: 1, cost: 20 },
+        ],
+        4,
+      ],
       output: 10,
     },
     {
-      input: [[{ hrs: 0.5, cost: 0 }, { hrs: 1, cost: 20 }], 0.5],
+      input: [
+        [
+          { hrs: 0.5, cost: 0 },
+          { hrs: 1, cost: 20 },
+        ],
+        0.5,
+      ],
       output: 0,
     },
     {
-      input: [[{ hrs: 0.5, cost: 0 }, { hrs: 1, cost: 20 }], 1],
+      input: [
+        [
+          { hrs: 0.5, cost: 0 },
+          { hrs: 1, cost: 20 },
+        ],
+        1,
+      ],
       output: 20,
     },
     {
-      input: [[{ hrs: 0.5, cost: 0 }, { hrs: 4, cost: 10 }, { hrs: 1, cost: 20 }], 4],
+      input: [
+        [
+          { hrs: 0.5, cost: 0 },
+          { hrs: 4, cost: 10 },
+          { hrs: 1, cost: 20 },
+        ],
+        4,
+      ],
       output: 10,
     },
     {
-      input: [[{ hrs: 0.5, cost: 0 }, { hrs: 4, cost: 10 }, { hrs: 1, cost: 20 }], 4.5],
+      input: [
+        [
+          { hrs: 0.5, cost: 0 },
+          { hrs: 4, cost: 10 },
+          { hrs: 1, cost: 20 },
+        ],
+        4.5,
+      ],
       output: 10,
     },
     {
-      input: [[{ hrs: 0.5, cost: 0 }, { hrs: 4, cost: 10 }, { hrs: 1, cost: 20 }], 5],
+      input: [
+        [
+          { hrs: 0.5, cost: 0 },
+          { hrs: 4, cost: 10 },
+          { hrs: 1, cost: 20 },
+        ],
+        5,
+      ],
       output: 30,
     },
   ]
@@ -64,7 +115,7 @@ describe('calculateFee()', () => {
   })
 
   const throwSpecs = [[], [null], [{}], [''], [1]]
-  throwSpecs.forEach(input => {
+  throwSpecs.forEach((input) => {
     it(`should throw when receives ${JSON.stringify(input)}`, () => {
       expect(() => calculateFee(...input)).toThrow()
     })
