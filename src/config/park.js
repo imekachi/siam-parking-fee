@@ -4,10 +4,16 @@ export const parkConfig = {
   ICON: {
     name: 'Icon Siam',
     color: COLORS.PURPLE,
-    feeRates: [
-      { hrs: 6, cost: 0 },
-      { hrs: 1, cost: 20 },
-    ],
+    feeRates:
+      new Date() > new Date('2021-01-31 23:59')
+        ? [
+            { hrs: 2, cost: 0 },
+            { hrs: 1, cost: 20 },
+          ]
+        : [
+            { hrs: 6, cost: 0 },
+            { hrs: 1, cost: 20 },
+          ],
   },
   SAMYAN: {
     name: 'SamYan Mitrtown',
