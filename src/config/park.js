@@ -1,6 +1,14 @@
 import COLORS from './colors'
 
 export const parkConfig = {
+  ICON: {
+    name: 'Icon Siam',
+    color: COLORS.PURPLE,
+    feeRates: [
+      { hrs: 6, cost: 0 },
+      { hrs: 1, cost: 20 },
+    ],
+  },
   SAMYAN: {
     name: 'SamYan Mitrtown',
     color: COLORS.YELLOW,
