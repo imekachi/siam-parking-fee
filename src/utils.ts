@@ -1,23 +1,16 @@
 /**
  * Check if the value is an array
- *
- * @param {*} value
- * @return {boolean}
  */
-export function isArray(value) {
+export function isArray(value: any): boolean {
   return !!value && typeof value === 'object' && value.constructor.name === 'Array'
 }
 
 /**
  * Get duration between two date objects
  * NOTE: the duration will always be positive, which mean the arguments order won't affect the result
- *
- * @param {Date} dateStart
- * @param {Date} [dateEnd = new Date()]
- * @returns {number} duration
  */
-export function getDurationHrs(dateStart, dateEnd = new Date()) {
-  const durationMillisec = Math.abs(dateEnd - dateStart)
+export function getDurationHrs(dateStart: Date, dateEnd: Date = new Date()): number {
+  const durationMillisec = Math.abs(dateEnd.getTime() - dateStart.getTime())
   // convert milliseconds to hours
   return durationMillisec / 1000 / 60 / 60
 }

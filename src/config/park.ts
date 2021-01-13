@@ -1,6 +1,17 @@
 import COLORS from './colors'
 
-export const parkConfig = {
+export interface ParkFeeRate {
+  hrs: number
+  cost: number
+}
+
+export interface ParkInfo {
+  name: string
+  color: string
+  feeRates: ParkFeeRate[]
+}
+
+export const parkConfig: { [key: string]: ParkInfo } = {
   ICON: {
     name: 'Icon Siam',
     color: COLORS.PURPLE,
