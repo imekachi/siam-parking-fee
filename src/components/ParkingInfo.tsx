@@ -1,9 +1,18 @@
-import PropTypes from 'prop-types'
 import React from 'react'
 import COLORS from '../config/colors'
 import './ParkInfo.css'
 
-function ParkingInfo(props) {
+interface Props {
+  name: string
+  color: string
+  start: Date
+  durationHrs: number
+  fee: number
+  isLive?: boolean
+  onClickLiveButton?: (event: React.MouseEvent<HTMLButtonElement>) => void
+}
+
+function ParkingInfo(props: Props) {
   const { name, color, start, durationHrs, fee, isLive, onClickLiveButton } = props
   return (
     <div className="parking-info-container">
@@ -27,16 +36,6 @@ function ParkingInfo(props) {
       </div>
     </div>
   )
-}
-
-ParkingInfo.propTypes = {
-  name: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-  start: PropTypes.instanceOf(Date).isRequired,
-  durationHrs: PropTypes.number.isRequired,
-  fee: PropTypes.number.isRequired,
-  isLive: PropTypes.bool,
-  onClickLiveButton: PropTypes.func,
 }
 
 export default ParkingInfo

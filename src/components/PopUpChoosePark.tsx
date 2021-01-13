@@ -1,9 +1,13 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { parkConfigEntries } from '../config/park'
 import './PopUpChoosePark.css'
 
-function PopUpChoosePark(props) {
+interface Props {
+  onChoosePark?: (event: React.MouseEvent<HTMLLIElement>) => void
+  onClickBackdrop?: (event: React.MouseEvent<HTMLDivElement>) => void
+}
+
+function PopUpChoosePark(props: Props) {
   const { onChoosePark, onClickBackdrop } = props
   return (
     <>
@@ -25,11 +29,6 @@ function PopUpChoosePark(props) {
       </section>
     </>
   )
-}
-
-PopUpChoosePark.propTypes = {
-  onChoosePark: PropTypes.func,
-  onClickBackdrop: PropTypes.func,
 }
 
 export default PopUpChoosePark

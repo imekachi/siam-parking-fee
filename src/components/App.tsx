@@ -9,10 +9,25 @@ import './App.css'
 import ParkingInfo from './ParkingInfo'
 import PopUpChoosePark from './PopUpChoosePark'
 
+interface ParkInfoState {
+  start: Date
+  name: string
+  color: string
+  durationHrs: number
+  fee: number
+}
+
+interface AppState {
+  isChoosingPark: boolean
+  isRendered: boolean
+  startTime?: Date
+  isLive?: boolean
+  park?: ParkInfoState
+}
 const defaultState = { isChoosingPark: false, isRendered: false }
 
 function App() {
-  const [state, setState] = useState(defaultState)
+  const [state, setState] = useState(defaultState as AppState)
 
   const onClickPark = () => {
     setState({
@@ -22,15 +37,15 @@ function App() {
     })
   }
 
-  const onChoosePark = (event) => {
-    const element = event.target
-    const parkId = element.dataset.parkId
+  const onChoosePark = (event: React.MouseEvent<HTMLElement>) => {
+    const element = event.target as HTMLElement
+    const parkId = element.dataset.parkId as string
 
     // get parkInfo
     const park = parkConfig[parkId]
 
     // store it to storage
-    storage.store({ start: state.startTime, parkId })
+    storage.store({ start: state.startTime as Date, parkId })
     // initialize currentDuration
     const currentDuration = 0.001
     // initialize currentFee
@@ -39,7 +54,7 @@ function App() {
     setState({
       ...state,
       park: {
-        start: state.startTime,
+        start: state.startTime as Date,
         name: park.name,
         color: park.color,
         durationHrs: currentDuration,
@@ -51,7 +66,7 @@ function App() {
 
   const onClickReset = () => {
     // we will remove storage data but we want to keep "isLive" setting
-    const { isLive } = storage.getData()
+    const { isLive } = storage.getData() ?? {}
     storage.reset()
     // save "isLive" back into storage
     storage.store({ isLive })
@@ -67,11 +82,11 @@ function App() {
     setState({ ...state, isLive })
   }
 
-  // This intended to run on the first mount ONLY
+  // This is intended to run on the first mount ONLY
   // to display current park state if exist
   useEffect(() => {
-    const { start, parkId, isLive: storageIsLive } = storage.getData()
-    if (!start) return undefined
+    const { start, parkId, isLive: storageIsLive } = storage.getData() ?? {}
+    if (!start || !parkId) return undefined
 
     const parkInfo = parkConfig[parkId]
 
@@ -94,7 +109,7 @@ function App() {
       })
     }
 
-    let timeoutId
+    let timeoutId: number
     if (state.isLive) {
       timeoutId = setTimeout(updateState, 1000)
     } else if (!state.isRendered) {

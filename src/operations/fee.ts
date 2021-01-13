@@ -53,8 +53,8 @@ export function calculateFee(feeRates: ParkFeeRate[], parkedHrs = 1): number {
 }
 
 export interface StorageParkingInfo {
-  parkId: string
-  start: Date
+  parkId?: string
+  start?: Date
   isLive?: boolean
 }
 
@@ -64,9 +64,9 @@ export const storage = {
     const prevData = this.getData()
     localStorage.setItem(this.key, JSON.stringify({ ...prevData, ...data }))
   },
-  getData: function (): StorageParkingInfo | {} {
+  getData: function (): StorageParkingInfo | null {
     const rawData = localStorage.getItem(this.key)
-    if (!rawData) return {}
+    if (!rawData) return null
 
     const parsedData = JSON.parse(rawData)
 
