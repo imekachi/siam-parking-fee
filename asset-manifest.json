@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/siam-parking-fee/static/css/main.867034f6.chunk.css",
-    "main.js": "/siam-parking-fee/static/js/main.868baf61.chunk.js",
-    "main.js.map": "/siam-parking-fee/static/js/main.868baf61.chunk.js.map",
-    "runtime-main.js": "/siam-parking-fee/static/js/runtime-main.df5a4980.js",
-    "runtime-main.js.map": "/siam-parking-fee/static/js/runtime-main.df5a4980.js.map",
-    "static/js/2.0dafb1b5.chunk.js": "/siam-parking-fee/static/js/2.0dafb1b5.chunk.js",
-    "static/js/2.0dafb1b5.chunk.js.map": "/siam-parking-fee/static/js/2.0dafb1b5.chunk.js.map",
+    "main.css": "/siam-parking-fee/static/css/main.e12a28d3.chunk.css",
+    "main.js": "/siam-parking-fee/static/js/main.bf806ce2.chunk.js",
+    "main.js.map": "/siam-parking-fee/static/js/main.bf806ce2.chunk.js.map",
+    "runtime-main.js": "/siam-parking-fee/static/js/runtime-main.e84fa1f7.js",
+    "runtime-main.js.map": "/siam-parking-fee/static/js/runtime-main.e84fa1f7.js.map",
+    "static/js/2.1e79d8a4.chunk.js": "/siam-parking-fee/static/js/2.1e79d8a4.chunk.js",
+    "static/js/2.1e79d8a4.chunk.js.map": "/siam-parking-fee/static/js/2.1e79d8a4.chunk.js.map",
     "index.html": "/siam-parking-fee/index.html",
     "service-worker.js": "/siam-parking-fee/service-worker.js",
     "service-worker.js.map": "/siam-parking-fee/service-worker.js.map",
-    "static/css/main.867034f6.chunk.css.map": "/siam-parking-fee/static/css/main.867034f6.chunk.css.map",
-    "static/js/2.0dafb1b5.chunk.js.LICENSE.txt": "/siam-parking-fee/static/js/2.0dafb1b5.chunk.js.LICENSE.txt"
+    "static/css/main.e12a28d3.chunk.css.map": "/siam-parking-fee/static/css/main.e12a28d3.chunk.css.map",
+    "static/js/2.1e79d8a4.chunk.js.LICENSE.txt": "/siam-parking-fee/static/js/2.1e79d8a4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.df5a4980.js",
-    "static/js/2.0dafb1b5.chunk.js",
-    "static/css/main.867034f6.chunk.css",
-    "static/js/main.868baf61.chunk.js"
+    "static/js/runtime-main.e84fa1f7.js",
+    "static/js/2.1e79d8a4.chunk.js",
+    "static/css/main.e12a28d3.chunk.css",
+    "static/js/main.bf806ce2.chunk.js"
   ]
 }
