@@ -1,49 +1,49 @@
 :root {
-	--radius: 3px;
+  --radius: 3px;
 }
 
 .header {
-	font-size: 21px;
-	text-align: center;
-	margin: 0 0 24px;
+  font-size: 21px;
+  text-align: center;
+  margin: 0 0 24px;
 }
 
 .chart-container {
-	max-width: 600px;
-	margin: 0 auto;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .floating-button {
-	position: fixed;
-	left: 0;
-	right: 0;
-	bottom: 60px;
-	z-index: 10;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 60px;
+  z-index: 10;
 
-	margin: auto;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-	font-size: 18px;
-	font-weight: bold;
-	line-height: 1;
-	color: #000;
-	text-transform: uppercase;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1;
+  color: #000;
+  text-transform: uppercase;
 
-	width: 128px;
-	height: 60px;
-	border-radius: 30px;
-	border: 0 none;
-	outline: 0 none;
-	cursor: pointer;
+  width: 128px;
+  height: 60px;
+  border-radius: 30px;
+  border: 0 none;
+  outline: 0 none;
+  cursor: pointer;
 }
 
 .floating-button > i {
-	margin-right: 6px;
+  margin-right: 6px;
 }
 
 ._prevent-selection {
-	user-select: none;
-	-webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
