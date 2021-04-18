@@ -45,7 +45,7 @@ function App() {
     const park = parkConfig[parkId]
 
     // store it to storage
-    storage.store({ start: state.startTime as Date, parkId })
+    storage.store({ start: state.startTime, parkId })
     // initialize currentDuration
     const currentDuration = 0.001
     // initialize currentFee
@@ -54,7 +54,7 @@ function App() {
     setState({
       ...state,
       park: {
-        start: state.startTime as Date,
+        start: state.startTime ?? new Date(),
         name: park.name,
         color: park.color,
         durationHrs: currentDuration,
