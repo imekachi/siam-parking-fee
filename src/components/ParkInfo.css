@@ -54,7 +54,7 @@
 
 .park-info > .label {
   display: inline-block;
-  vertical-align: center;
+  vertical-align: baseline;
   min-width: 72px;
 }
 

@@ -19,7 +19,7 @@ function ParkingInfo(props: Props) {
       <button className={`live-button${isLive ? ' -live' : ''}`} onClick={onClickLiveButton}>
         LIVE
       </button>
-      <h2 className="parking-at" style={{ color: color }}>
+      <h2 className="parking-at" style={{ color }}>
         {name}
       </h2>
       <div className="park-info -start">
