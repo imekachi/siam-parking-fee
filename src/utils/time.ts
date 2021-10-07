@@ -27,7 +27,7 @@ export function durationToTime(ms: number): TimeFragment {
    * @param {number} msUnit - Size of a single unit in milliseconds
    * @return {number} Number of units taken from the time pool
    */
-  const allocate = (msUnit: number) => {
+  const allocate = (msUnit: number): number => {
     const units = Math.trunc(ms / msUnit)
     ms -= units * msUnit
     return units
