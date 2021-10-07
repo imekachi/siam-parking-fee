@@ -4,23 +4,23 @@
   "homepage": "https://imekachi.github.io/siam-parking-fee/",
   "private": true,
   "dependencies": {
-    "chart.js": "^2.9.4",
+    "chart.js": "^3.5.1",
     "react": "^17.0.2",
-    "react-chartjs-2": "^2.11.1",
+    "react-chartjs-2": "^3.0.5",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
-    "workbox-background-sync": "^6.1.5",
-    "workbox-broadcast-update": "^6.1.5",
-    "workbox-cacheable-response": "^6.1.5",
-    "workbox-core": "^6.1.5",
-    "workbox-expiration": "^6.1.5",
-    "workbox-google-analytics": "^6.1.5",
-    "workbox-navigation-preload": "^6.1.5",
-    "workbox-precaching": "^6.1.5",
-    "workbox-range-requests": "^6.1.5",
-    "workbox-routing": "^6.1.5",
-    "workbox-strategies": "^6.1.5",
-    "workbox-streams": "^6.1.5"
+    "workbox-background-sync": "^6.3.0",
+    "workbox-broadcast-update": "^6.3.0",
+    "workbox-cacheable-response": "^6.3.0",
+    "workbox-core": "^6.3.0",
+    "workbox-expiration": "^6.3.0",
+    "workbox-google-analytics": "^6.3.0",
+    "workbox-navigation-preload": "^6.3.0",
+    "workbox-precaching": "^6.3.0",
+    "workbox-range-requests": "^6.3.0",
+    "workbox-routing": "^6.3.0",
+    "workbox-strategies": "^6.3.0",
+    "workbox-streams": "^6.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -28,13 +28,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn test --watchAll=false",
-      "pre-push": "yarn deploy"
-    }
+    "deploy": "gh-pages -d build",
+    "prepare": "husky install"
   },
   "prettier": {
     "trailingComma": "es5",
@@ -44,14 +39,10 @@
   },
   "eslintConfig": {
     "extends": [
-      "prettier",
+      "plugin:prettier/recommended",
       "react-app"
     ],
-    "plugins": [
-      "prettier"
-    ],
     "rules": {
-      "prettier/prettier": "error",
       "no-console": "off"
     }
   },
@@ -68,16 +59,16 @@
     ]
   },
   "devDependencies": {
-    "@types/jest": "^26.0.22",
-    "@types/node": "^14.14.41",
-    "@types/react": "^17.0.3",
-    "@types/react-dom": "^17.0.3",
-    "eslint-config-prettier": "^8.2.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "gh-pages": "^3.1.0",
-    "husky": "^4.3.6",
-    "prettier": "^2.2.1",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.10.3",
+    "@types/react": "^17.0.27",
+    "@types/react-dom": "^17.0.9",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "gh-pages": "^3.2.3",
+    "husky": "^7.0.0",
+    "prettier": "^2.4.1",
     "prop-types": "^15.7.2",
-    "typescript": "^4.2.4"
+    "typescript": "^4.4.3"
   }
 }
