@@ -1,19 +1,50 @@
-import React from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import COLORS from '../config/colors'
 import './ParkInfo.css'
+import { parkConfig } from '../config/park'
+import { calculateFee } from '../operations/fee'
+import { getDuration, milliToHrs } from '../utils'
 
-interface Props {
-  name: string
-  color: string
+interface ParkingInfoProps {
+  parkId: string
   start: Date
-  durationHrs: number
-  fee: number
   isLive?: boolean
   onClickLiveButton?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-function ParkingInfo(props: Props) {
-  const { name, color, start, durationHrs, fee, isLive, onClickLiveButton } = props
+function ParkingInfo(props: ParkingInfoProps) {
+  const { parkId, start, isLive, onClickLiveButton } = props
+  const { color, name, feeRates } = parkConfig[parkId]
+
+  const [renderController, setRenderController] = useState(false)
+
+  const { durationHrs, fee } = useMemo(
+    (): { durationHrs: number; fee: number } => {
+      const duration = getDuration(start)
+      const newDurationHrs = milliToHrs(duration)
+      return {
+        durationHrs: newDurationHrs,
+        fee: calculateFee(feeRates, newDurationHrs),
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [feeRates, start, renderController]
+  )
+
+  // live update fee/duration
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout
+    if (isLive) {
+      timeoutId = setTimeout(() => {
+        setRenderController(!renderController)
+      }, 1000)
+    }
+
+    return () => {
+      clearTimeout(timeoutId)
+    }
+  }, [isLive, renderController])
+
   return (
     <div className="parking-info-container">
       <button className={`live-button${isLive ? ' -live' : ''}`} onClick={onClickLiveButton}>

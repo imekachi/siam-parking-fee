@@ -6,11 +6,16 @@ export function isArray(value: any): boolean {
 }
 
 /**
- * Get duration between two date objects
+ * Get duration between two date objects in milliseconds
  * NOTE: the duration will always be positive, which mean the arguments order won't affect the result
  */
-export function getDurationHrs(dateStart: Date, dateEnd: Date = new Date()): number {
-  const durationMillisec = Math.abs(dateEnd.getTime() - dateStart.getTime())
-  // convert milliseconds to hours
-  return durationMillisec / 1000 / 60 / 60
+export function getDuration(dateStart: Date, dateEnd: Date = new Date()): number {
+  return Math.abs(dateEnd.getTime() - dateStart.getTime())
+}
+
+/**
+ * converts milliseconds to hours
+ */
+export function milliToHrs(milliseconds: number): number {
+  return milliseconds / 1000 / 60 / 60
 }

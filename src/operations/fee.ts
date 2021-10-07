@@ -3,9 +3,6 @@ import { ParkFeeRate } from '../config/park'
 
 /**
  * calculate parking fee
- *
- * @param {Array.<{hrs: number, cost: number}>} feeRates
- * @param {number} [parkedHrs = 1]
  */
 export function calculateFee(feeRates: ParkFeeRate[], parkedHrs = 1): number {
   if (!isArray(feeRates)) {

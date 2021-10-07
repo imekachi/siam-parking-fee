@@ -1,14 +1,13 @@
-import React from 'react'
+import React, { MouseEventHandler } from 'react'
 import { parkConfigEntries } from '../config/park'
-import './PopUpChoosePark.css'
+import './ParkSelectionPopup.css'
 
-interface Props {
-  onChoosePark?: (event: React.MouseEvent<HTMLLIElement>) => void
-  onClickBackdrop?: (event: React.MouseEvent<HTMLDivElement>) => void
+interface ParkSelectorPopupProps {
+  onChoosePark?: MouseEventHandler<HTMLLIElement>
+  onClickBackdrop?: MouseEventHandler<HTMLDivElement>
 }
 
-function PopUpChoosePark(props: Props) {
-  const { onChoosePark, onClickBackdrop } = props
+function ParkSelectionPopup({ onChoosePark, onClickBackdrop }: ParkSelectorPopupProps) {
   return (
     <>
       <div className="backdrop" onClick={onClickBackdrop} />
@@ -31,4 +30,4 @@ function PopUpChoosePark(props: Props) {
   )
 }
 
-export default PopUpChoosePark
+export default ParkSelectionPopup

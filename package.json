@@ -43,7 +43,9 @@
       "react-app"
     ],
     "rules": {
-      "no-console": "off"
+      "no-console": "off",
+      "arrow-body-style": ["error", "as-needed"],
+      "@typescript-eslint/no-shadow": "error"
     }
   },
   "browserslist": {

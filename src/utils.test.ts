@@ -1,4 +1,4 @@
-import { getDurationHrs, isArray } from './utils'
+import { getDuration, isArray } from './utils'
 
 describe('utils/isArray()', () => {
   const specs = [
@@ -35,35 +35,38 @@ describe('utils/isArray()', () => {
   })
 })
 
-describe('utils/getDurationHrs', () => {
-  const specs = [
+describe('utils/getDuration', () => {
+  const specs: {
+    input: Parameters<typeof getDuration>
+    output: ReturnType<typeof getDuration>
+  }[] = [
     {
       input: [new Date('2019-01-01 10:00:000Z'), new Date('2019-01-01 11:00:000Z')],
-      output: 1,
+      output: 3600000,
     },
     {
       input: [new Date('2019-01-01 11:00:000Z'), new Date('2019-01-01 10:00:000Z')],
-      output: 1,
+      output: 3600000,
     },
     {
       input: [new Date('2019-01-01 10:00:000Z'), new Date('2019-01-01 10:30:000Z')],
-      output: 0.5,
+      output: 1800000,
     },
     {
       input: [new Date('2019-01-01 10:00:000Z'), new Date('2019-01-01 10:15:000Z')],
-      output: 0.25,
+      output: 900000,
     },
     {
       input: [new Date('2019-01-01 10:00:000Z'), new Date('2019-01-02 10:00:000Z')],
-      output: 24,
+      output: 86400000,
     },
     {
       input: [new Date('2019-01-01 10:00:000Z'), new Date('2019-01-01 15:15:000Z')],
-      output: 5.25,
+      output: 18900000,
     },
     {
       input: [new Date('2019-01-01 10:00:000Z'), new Date('2019-01-01 6:15:000Z')],
-      output: 3.75,
+      output: 13500000,
     },
   ]
 
@@ -71,7 +74,7 @@ describe('utils/getDurationHrs', () => {
     it(`should return ${JSON.stringify(output)}, when receives (${JSON.stringify(
       input[0]
     )}, ${JSON.stringify(input[1])})`, () => {
-      expect(getDurationHrs(...input)).toBe(output)
+      expect(getDuration(...input)).toBe(output)
     })
   })
 })
