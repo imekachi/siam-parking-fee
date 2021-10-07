@@ -1,5 +1,5 @@
-import { isArray } from '../utils'
 import { ParkFeeRate } from '../config/park'
+import { isArray } from '../utils/array'
 
 /**
  * calculate parking fee

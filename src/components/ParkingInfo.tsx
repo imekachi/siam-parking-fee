@@ -3,7 +3,7 @@ import COLORS from '../config/colors'
 import './ParkInfo.css'
 import { parkConfig } from '../config/park'
 import { calculateFee } from '../operations/fee'
-import { getDuration, milliToHrs } from '../utils'
+import { formatDuration, getDuration, msToHrs } from '../utils/time'
 
 interface ParkingInfoProps {
   parkId: string
@@ -18,12 +18,12 @@ function ParkingInfo(props: ParkingInfoProps) {
 
   const [renderController, setRenderController] = useState(false)
 
-  const { durationHrs, fee } = useMemo(
-    (): { durationHrs: number; fee: number } => {
-      const duration = getDuration(start)
-      const newDurationHrs = milliToHrs(duration)
+  const { duration, fee } = useMemo(
+    (): { duration: number; fee: number } => {
+      const ms = getDuration(start)
+      const newDurationHrs = msToHrs(ms)
       return {
-        durationHrs: newDurationHrs,
+        duration: ms,
         fee: calculateFee(feeRates, newDurationHrs),
       }
     },
@@ -57,7 +57,7 @@ function ParkingInfo(props: ParkingInfoProps) {
         <span className="label">Check-in:</span> <strong>{start.toLocaleString()}</strong>
       </div>
       <div className="park-info -duration">
-        <span className="label">Duration:</span> <strong>{durationHrs.toLocaleString()} hrs</strong>
+        <span className="label">Duration:</span> <strong>{formatDuration(duration)}</strong>
       </div>
       <div className="park-info -fee">
         <span className="label">Total: </span>
