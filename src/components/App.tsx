@@ -11,10 +11,6 @@ function App() {
   const [isChoosingPark, setIsChoosingPark] = useState(false)
   const { parkingInfo, isLive, toggleIsLive, savePark, resetPark } = useParkingState()
 
-  const onClickPark = () => {
-    setIsChoosingPark(true)
-  }
-
   const onChoosePark = (event: React.MouseEvent<HTMLElement>) => {
     const element = event.target as HTMLElement
     const parkId = element.dataset.parkId as string
@@ -39,11 +35,14 @@ function App() {
           <ResetButton onClick={resetPark} />
         </>
       ) : (
-        <ParkButton onClick={onClickPark} />
+        <ParkButton onClick={() => setIsChoosingPark(true)} />
       )}
 
       {isChoosingPark && (
-        <ParkSelectionPopup onChoosePark={onChoosePark} onClickBackdrop={resetPark} />
+        <ParkSelectionPopup
+          onChoosePark={onChoosePark}
+          onClickBackdrop={() => setIsChoosingPark(false)}
+        />
       )}
     </main>
   )
