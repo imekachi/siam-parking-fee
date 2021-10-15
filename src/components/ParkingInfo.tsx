@@ -33,9 +33,9 @@ function ParkingInfo(props: ParkingInfoProps) {
 
   // live update fee/duration
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout
+    let timeoutId: number
     if (isLive) {
-      timeoutId = setTimeout(() => {
+      timeoutId = window.setTimeout(() => {
         setRenderController(!renderController)
       }, 1000)
     }
