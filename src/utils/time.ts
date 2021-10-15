@@ -1,9 +1,9 @@
+import { strPad } from './string'
+
 /**
  * Get duration between two date objects in milliseconds
  * NOTE: the duration will always be positive, which mean the arguments order won't affect the result
  */
-import { strPad } from './string'
-
 export function getDuration(dateStart: Date, dateEnd: Date = new Date()): number {
   return Math.abs(dateEnd.getTime() - dateStart.getTime())
 }
