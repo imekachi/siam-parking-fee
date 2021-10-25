@@ -2,16 +2,20 @@ import React, { MouseEventHandler } from 'react'
 import { parkConfigEntries } from '../config/park'
 import './ParkSelectionPopup.css'
 
-interface ParkSelectorPopupProps {
+interface ParkSelectionPopupProps {
   onChoosePark?: MouseEventHandler<HTMLLIElement>
   onClickBackdrop?: MouseEventHandler<HTMLDivElement>
 }
 
-function ParkSelectionPopup({ onChoosePark, onClickBackdrop }: ParkSelectorPopupProps) {
+function ParkSelectionPopup({ onChoosePark, onClickBackdrop }: ParkSelectionPopupProps) {
   return (
     <>
-      <div className="backdrop" onClick={onClickBackdrop} />
-      <section className="popup">
+      <div
+        className="backdrop"
+        onClick={onClickBackdrop}
+        data-testid="ParkSelectionPopupBackdrop"
+      />
+      <section className="popup" data-testid="ParkSelectionPopup">
         <div className="popup-header">Where are you parking at?</div>
         <ul className="park-list">
           {parkConfigEntries.map(([key, info]) => (

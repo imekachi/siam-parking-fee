@@ -1,0 +1,19 @@
+{
+  "$schema": "https://on.cypress.io/cypress.schema.json",
+  "baseUrl": "http://localhost:3000/siam-parking-fee",
+  "ignoreTestFiles": [
+    "**/__snapshots__/*",
+    "**/__image_snapshots__/*"
+  ],
+  "viewportWidth": 412,
+  "viewportHeight": 783,
+  "env": {
+    "cypress-plugin-snapshots": {
+      "autoCleanUp": true,
+      "imageConfig": {
+        "threshold": 0.01
+      }
+    }
+  }
+}
+

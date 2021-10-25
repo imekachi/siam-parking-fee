@@ -4,7 +4,7 @@ import React from 'react'
 
 export default function FeeChart() {
   return (
-    <div className="chart-container">
+    <div className="chart-container" data-testid="FeeChart">
       <Line data={chartData} options={chartOptions} height={280} />
     </div>
   )

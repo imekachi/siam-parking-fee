@@ -11,6 +11,7 @@ export default function ParkButton({ onClick }: ParkButtonProps) {
       className="floating-button _prevent-selection"
       style={{ backgroundColor: COLORS.PURPLE }}
       onClick={onClick}
+      data-testid="ParkButton"
     >
       <i className="material-icons">directions_car</i>Park
     </button>

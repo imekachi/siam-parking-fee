@@ -27,6 +27,7 @@ function ParkingInfo(props: ParkingInfoProps) {
         fee: calculateFee(feeRates, newDurationHrs),
       }
     },
+    // renderController is unused, but I'm using it to trigger re-rendering from setTimeout
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [feeRates, start, renderController]
   )
@@ -46,8 +47,12 @@ function ParkingInfo(props: ParkingInfoProps) {
   }, [isLive, renderController])
 
   return (
-    <div className="parking-info-container">
-      <button className={`live-button${isLive ? ' -live' : ''}`} onClick={onClickLiveButton}>
+    <div className="parking-info-container" data-testid="ParkInfo">
+      <button
+        className={`live-button${isLive ? ' -live' : ''}`}
+        onClick={onClickLiveButton}
+        data-testid="LiveButton"
+      >
         LIVE
       </button>
       <h2 className="parking-at" style={{ color }}>
