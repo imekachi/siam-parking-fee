@@ -60,6 +60,22 @@ export const parkConfig: { [key: string]: ParkInfo } = {
       { hrs: 1, cost: 20 },
     ],
   },
+  SILOM_COM_WE: {
+    name: 'Silom Complex (Weekend)',
+    color: COLORS.ORANGE,
+    feeRates: [
+      { hrs: 2, cost: 0 },
+      { hrs: 1, cost: 15 },
+    ],
+  },
+  SILOM_COM_WD: {
+    name: 'Silom Complex (Weekday)',
+    color: COLORS.TEAL,
+    feeRates: [
+      { hrs: 1, cost: 0 },
+      { hrs: 1, cost: 15 },
+    ],
+  },
 }
 
 export const parkConfigEntries = Object.entries(parkConfig)
