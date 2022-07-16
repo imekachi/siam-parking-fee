@@ -1,7 +1,7 @@
 import { calculateFee } from '../operations/fee'
 import COLORS from './colors'
 import { parkConfig, ParkInfo } from './park'
-import * as Chart from 'chart.js'
+import type { ChartOptions } from 'chart.js'
 
 const MAX_OVERVIEW_HOURS = 8
 
@@ -28,7 +28,7 @@ export const chartData = {
   datasets: feeOverview,
 }
 
-export const chartOptions: Chart.ChartOptions = {
+export const chartOptions: ChartOptions = {
   maintainAspectRatio: false,
   plugins: {
     tooltip: {
