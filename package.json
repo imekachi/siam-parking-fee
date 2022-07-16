@@ -71,7 +71,7 @@
     "@types/node": "^18.0.5",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
-    "cypress": "^8.6.0",
+    "cypress": "^10.3.0",
     "cypress-plugin-snapshots": "^1.4.4",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-cypress": "^2.12.1",

@@ -4,5 +4,5 @@
     "noEmit": true,
     "types": ["cypress", "cypress-plugin-snapshots"]
   },
-  "include": ["cypress"]
+  "include": ["."]
 }
