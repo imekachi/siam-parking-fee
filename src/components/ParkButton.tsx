@@ -1,5 +1,5 @@
 import COLORS from '../config/colors'
-import React, { MouseEventHandler } from 'react'
+import { MouseEventHandler } from 'react'
 
 interface ParkButtonProps {
   onClick?: MouseEventHandler<HTMLButtonElement>

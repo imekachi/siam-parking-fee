@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import COLORS from '../config/colors'
 import './ParkInfo.css'
 import { parkConfig } from '../config/park'

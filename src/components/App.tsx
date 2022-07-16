@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import './App.css'
 import ParkingInfo from './ParkingInfo'
 import ParkSelectionPopup from './ParkSelectionPopup'
