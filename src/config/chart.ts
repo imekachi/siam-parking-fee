@@ -1,7 +1,7 @@
 import { calculateFee } from '../operations/fee'
 import COLORS from './colors'
 import { parkConfig, ParkInfo } from './park'
-import type { ChartOptions } from 'chart.js'
+import type { ChartOptions, Chart as ChartJS } from 'chart.js'
 
 const MAX_OVERVIEW_HOURS = 8
 
@@ -45,6 +45,27 @@ export const chartOptions: ChartOptions = {
         padding: 20,
         usePointStyle: true,
       },
+      onClick: (event, legendItem, legend) => {
+        const clickedIndex = legendItem.datasetIndex
+        const chart = legend.chart
+        const isAllDataVisible = checkIfAllDatasetVisible(chart)
+
+        if (isAllDataVisible) {
+          // if all data is visible, when click a legend, only display that legend
+          hideOtherDataset(chart, clickedIndex)
+        } else {
+          if (chart.isDatasetVisible(clickedIndex)) {
+            // if it's the only dataset left, then show all dataset instead (reset the visibility state of all)
+            if (chart.getVisibleDatasetCount() === 1) {
+              showAllDataset(chart)
+            } else {
+              hideDataset(chart, clickedIndex)
+            }
+          } else {
+            showDataset(chart, clickedIndex)
+          }
+        }
+      },
     },
   },
   hover: {
@@ -66,4 +87,42 @@ export const chartOptions: ChartOptions = {
       },
     },
   },
+}
+
+function checkIfAllDatasetVisible(chart: ChartJS): boolean {
+  return chart.data.datasets.length === chart.getVisibleDatasetCount()
+}
+
+function hideOtherDataset(chart: ChartJS, exceptIndex: number): void {
+  chart.data.datasets.forEach((data, index) => {
+    if (index !== exceptIndex) {
+      hideDataset(chart, index)
+    }
+  })
+}
+
+function showAllDataset(chart: ChartJS): void {
+  chart.data.datasets.forEach((data, index) => {
+    showDataset(chart, index)
+  })
+}
+
+function showDataset(chart: ChartJS, index: number): void {
+  // show the dataset
+  chart.show(index)
+  // show the legend
+  const legendItem = chart.legend?.legendItems?.[index]
+  if (legendItem) {
+    legendItem.hidden = false
+  }
+}
+
+function hideDataset(chart: ChartJS, index: number): void {
+  // show the dataset
+  chart.hide(index)
+  // show the legend
+  const legendItem = chart.legend?.legendItems?.[index]
+  if (legendItem) {
+    legendItem.hidden = true
+  }
 }
