@@ -1,22 +1,14 @@
 {
   "files": {
-    "main.css": "/siam-parking-fee/static/css/main.738c7405.chunk.css",
-    "main.js": "/siam-parking-fee/static/js/main.f5aa991c.chunk.js",
-    "main.js.map": "/siam-parking-fee/static/js/main.f5aa991c.chunk.js.map",
-    "runtime-main.js": "/siam-parking-fee/static/js/runtime-main.71fac0b3.js",
-    "runtime-main.js.map": "/siam-parking-fee/static/js/runtime-main.71fac0b3.js.map",
-    "static/js/2.884ab4ad.chunk.js": "/siam-parking-fee/static/js/2.884ab4ad.chunk.js",
-    "static/js/2.884ab4ad.chunk.js.map": "/siam-parking-fee/static/js/2.884ab4ad.chunk.js.map",
-    "index.html": "/siam-parking-fee/index.html",
+    "main.css": "/siam-parking-fee/static/css/main.a8df33d6.css",
+    "main.js": "/siam-parking-fee/static/js/main.05732db5.js",
     "service-worker.js": "/siam-parking-fee/service-worker.js",
-    "service-worker.js.map": "/siam-parking-fee/service-worker.js.map",
-    "static/css/main.738c7405.chunk.css.map": "/siam-parking-fee/static/css/main.738c7405.chunk.css.map",
-    "static/js/2.884ab4ad.chunk.js.LICENSE.txt": "/siam-parking-fee/static/js/2.884ab4ad.chunk.js.LICENSE.txt"
+    "index.html": "/siam-parking-fee/index.html",
+    "main.a8df33d6.css.map": "/siam-parking-fee/static/css/main.a8df33d6.css.map",
+    "main.05732db5.js.map": "/siam-parking-fee/static/js/main.05732db5.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.71fac0b3.js",
-    "static/js/2.884ab4ad.chunk.js",
-    "static/css/main.738c7405.chunk.css",
-    "static/js/main.f5aa991c.chunk.js"
+    "static/css/main.a8df33d6.css",
+    "static/js/main.05732db5.js"
   ]
 }
