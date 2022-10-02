@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/siam-parking-fee/static/css/main.a8df33d6.css",
-    "main.js": "/siam-parking-fee/static/js/main.148d255e.js",
+    "main.js": "/siam-parking-fee/static/js/main.9478a157.js",
     "service-worker.js": "/siam-parking-fee/service-worker.js",
     "index.html": "/siam-parking-fee/index.html",
     "main.a8df33d6.css.map": "/siam-parking-fee/static/css/main.a8df33d6.css.map",
-    "main.148d255e.js.map": "/siam-parking-fee/static/js/main.148d255e.js.map"
+    "main.9478a157.js.map": "/siam-parking-fee/static/js/main.9478a157.js.map"
   },
   "entrypoints": [
     "static/css/main.a8df33d6.css",
-    "static/js/main.148d255e.js"
+    "static/js/main.9478a157.js"
   ]
 }
