@@ -28,7 +28,7 @@ export const chartData = {
   datasets: feeOverview,
 }
 
-export const chartOptions: ChartOptions = {
+export const chartOptions: ChartOptions<'line'> = {
   maintainAspectRatio: false,
   plugins: {
     tooltip: {
