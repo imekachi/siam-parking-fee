@@ -34,6 +34,7 @@ export const parkConfig: { [key: string]: ParkInfo } = {
     name: 'MBK',
     color: COLORS.RED,
     feeRates: [
+      { hrs: 0.5, cost: 0 },
       { hrs: 2, cost: 10 },
       { hrs: 1, cost: 10 },
     ],
