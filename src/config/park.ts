@@ -56,6 +56,14 @@ export const parkConfig: { [key: string]: ParkInfo } = {
       { hrs: 1, cost: 20 },
     ],
   },
+  SIAMSCAPE: {
+    name: 'SIAMSCAPE',
+    color: COLORS.ORANGE,
+    feeRates: [
+      { hrs: 1, cost: 0 },
+      { hrs: 1, cost: 20 },
+    ],
+  },
   SILOM_COM_WE: {
     name: 'Silom Complex (Weekend)',
     color: COLORS.ORANGE,
