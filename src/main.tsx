@@ -1,13 +1,17 @@
 import './index.css'
 import App from './components/App'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
-
 import { createRoot } from 'react-dom/client'
+import { StrictMode } from 'react'
+import './index.css'
 
 const container = document.getElementById('root')
 const root = createRoot(container!)
-
-root.render(<App />)
+root.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+)
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
