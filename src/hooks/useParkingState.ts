@@ -15,7 +15,7 @@ export function useParkingState() {
     const { start, parkId, isLive: storageIsLive } = storage.getData() ?? {}
     if (!start || !parkId) return undefined
 
-    setIsLive(!!storageIsLive)
+    setIsLive(Boolean(storageIsLive))
     setParkingInfo({ parkId, start })
   }, [setIsLive])
 

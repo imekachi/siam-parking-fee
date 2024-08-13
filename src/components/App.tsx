@@ -1,15 +1,16 @@
 import { useState } from 'react'
 import './App.css'
-import ParkingInfo from './ParkingInfo'
-import ParkSelectionPopup from './ParkSelectionPopup'
+import { useParkingState } from '../hooks/useParkingState'
 import FeeChart from './FeeChart'
 import ParkButton from './ParkButton'
+import ParkingInfo from './ParkingInfo'
+import ParkSelectionPopup from './ParkSelectionPopup'
 import ResetButton from './ResetButton'
-import { useParkingState } from '../hooks/useParkingState'
 
 function App() {
   const [isChoosingPark, setIsChoosingPark] = useState(false)
-  const { parkingInfo, isLive, toggleIsLive, savePark, resetPark } = useParkingState()
+  const { parkingInfo, isLive, toggleIsLive, savePark, resetPark } =
+    useParkingState()
 
   const onChoosePark = (event: React.MouseEvent<HTMLElement>) => {
     const element = event.target as HTMLElement

@@ -1,5 +1,5 @@
-import COLORS from '../config/colors'
 import { MouseEventHandler } from 'react'
+import COLORS from '../config/colors'
 
 interface ResetButtonProps {
   onClick?: MouseEventHandler<HTMLButtonElement>

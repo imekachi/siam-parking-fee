@@ -1,26 +1,30 @@
 import js from '@eslint/js'
-import globals from 'globals'
+import stylistic from '@stylistic/eslint-plugin'
+import importPlugin from 'eslint-plugin-import'
+import prettier from 'eslint-plugin-prettier'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
-import prettier from 'eslint-plugin-prettier'
-import tseslint from 'typescript-eslint'
-import importPlugin from 'eslint-plugin-import'
 import unusedImports from 'eslint-plugin-unused-imports'
-import stylistic from '@stylistic/eslint-plugin'
+import globals from 'globals'
+import tseslint from 'typescript-eslint'
 
 export default tseslint.config({
   extends: [js.configs.recommended, ...tseslint.configs.recommended],
-  files: ['**/*.{ts,tsx}'],
+  files: ['**/*.{ts,tsx,js,cjs,mjs}'],
   ignores: ['dist', 'cypress/**/*'],
   languageOptions: {
     ecmaVersion: 2023,
-    globals: globals.browser,
+    globals: {
+      ...globals.browser,
+      React: true,
+      JSX: true,
+    },
   },
   plugins: {
     'react-hooks': reactHooks,
     'react-refresh': reactRefresh,
     import: importPlugin,
-    prettier: prettier,
+    prettier,
     'unused-imports': unusedImports,
     '@stylistic': stylistic,
   },

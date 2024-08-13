@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from 'react'
+import { MouseEventHandler } from 'react'
 import { parkConfigEntries } from '../config/park'
 import './ParkSelectionPopup.css'
 
@@ -7,7 +7,10 @@ interface ParkSelectionPopupProps {
   onClickBackdrop?: MouseEventHandler<HTMLDivElement>
 }
 
-function ParkSelectionPopup({ onChoosePark, onClickBackdrop }: ParkSelectionPopupProps) {
+function ParkSelectionPopup({
+  onChoosePark,
+  onClickBackdrop,
+}: ParkSelectionPopupProps) {
   return (
     <>
       <div

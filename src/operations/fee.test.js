@@ -108,7 +108,7 @@ describe('calculateFee()', () => {
   ]
   specs.forEach(({ input, output }) => {
     it(`should return ${JSON.stringify(output)}, when receive (${JSON.stringify(
-      input[0]
+      input[0],
     )}, ${JSON.stringify(input[1])})`, () => {
       expect(calculateFee(...input)).toBe(output)
     })

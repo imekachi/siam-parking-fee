@@ -10,7 +10,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "pnpm lint --fix",
-    "type-check": "tsc --noEmit",
+    "type-check": "tsc --noEmit -p tsconfig.app.json",
     "preview": "vite preview",
     "predeploy": "pnpm build",
     "deploy": "gh-pages -d dist",

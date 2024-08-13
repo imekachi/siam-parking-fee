@@ -1,7 +1,7 @@
+import type { Chart as ChartJS, ChartOptions } from 'chart.js'
 import { calculateFee } from '../operations/fee'
 import COLORS from './colors'
 import { parkConfig, ParkInfo } from './park'
-import type { ChartOptions, Chart as ChartJS } from 'chart.js'
 
 const MAX_OVERVIEW_HOURS = 8
 
@@ -10,7 +10,7 @@ export const OVERVIEW_HOURS_ARRAY = Array.from(
   { length: MAX_OVERVIEW_HOURS },
   // map function to create the array using index + 1
   // which will result in an array starting from 1 to array length
-  (unused, index) => index + 1
+  (_unused, index) => index + 1,
 )
 /**
  * This data shows parking fee of each place for each hour you parked
@@ -24,7 +24,9 @@ export const feeOverview = Object.values(parkConfig).map((park: ParkInfo) => ({
 }))
 
 export const chartData = {
-  labels: OVERVIEW_HOURS_ARRAY.map((hour) => `${hour} hr${hour > 1 ? 's' : ''}`),
+  labels: OVERVIEW_HOURS_ARRAY.map(
+    (hour) => `${hour} hr${hour > 1 ? 's' : ''}`,
+  ),
   datasets: feeOverview,
 }
 
@@ -45,7 +47,7 @@ export const chartOptions: ChartOptions<'line'> = {
         padding: 20,
         usePointStyle: true,
       },
-      onClick: (event, legendItem, legend) => {
+      onClick: (_event, legendItem, legend) => {
         const clickedIndex = legendItem.datasetIndex
         const chart = legend.chart
         const isAllDataVisible = checkIfAllDatasetVisible(chart)
@@ -94,7 +96,7 @@ function checkIfAllDatasetVisible(chart: ChartJS): boolean {
 }
 
 function hideOtherDataset(chart: ChartJS, exceptIndex: number): void {
-  chart.data.datasets.forEach((data, index) => {
+  chart.data.datasets.forEach((_data, index) => {
     if (index !== exceptIndex) {
       hideDataset(chart, index)
     }
@@ -102,7 +104,7 @@ function hideOtherDataset(chart: ChartJS, exceptIndex: number): void {
 }
 
 function showAllDataset(chart: ChartJS): void {
-  chart.data.datasets.forEach((data, index) => {
+  chart.data.datasets.forEach((_data, index) => {
     showDataset(chart, index)
   })
 }
