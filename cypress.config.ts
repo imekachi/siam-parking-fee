@@ -18,7 +18,7 @@ export default defineConfig({
       // eslint-disable-next-line @typescript-eslint/no-require-imports
       return require('./cypress/plugins/index.js')(on, config)
     },
-    baseUrl: 'http://localhost:3000/siam-parking-fee',
+    baseUrl: 'http://localhost:4173/siam-parking-fee/',
     excludeSpecPattern: ['**/__snapshots__/*', '**/__image_snapshots__/*'],
   },
 })
