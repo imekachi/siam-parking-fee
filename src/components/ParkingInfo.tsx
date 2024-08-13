@@ -1,9 +1,10 @@
+import clsx from 'clsx'
 import { useEffect, useMemo, useState } from 'react'
 import COLORS from '../config/colors'
-import './ParkInfo.css'
 import { parkConfig } from '../config/park'
 import { calculateFee } from '../operations/fee'
 import { formatDuration, getDuration, msToHrs } from '../utils/time'
+import './ParkInfo.css'
 
 interface ParkingInfoProps {
   parkId: string
@@ -49,7 +50,7 @@ function ParkingInfo(props: ParkingInfoProps) {
   return (
     <div className="parking-info-container" data-testid="ParkInfo">
       <button
-        className={`live-button${isLive ? '-live' : ''}`}
+        className={clsx('live-button', isLive && '-live')}
         onClick={onClickLiveButton}
         data-testid="LiveButton"
       >
