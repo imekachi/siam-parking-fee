@@ -1,4 +1,18 @@
 #!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+# Skip git hook during merge or rebase
+if [ -n "$GIT_SEQUENCE_EDITOR" ];
+then
+  echo "Skip husky pre-commit hook during git merge or git rebase"
+  exit 0
+fi
 
-# pnpm test -- --watchAll=false
+# Prevent accidentally commit to protected branches
+currentBranch="$(git rev-parse --abbrev-ref HEAD)"
+if [ "$currentBranch" = "main" ] || [ "$currentBranch" = "development" ];
+then
+  echo "\"$currentBranch\" branch is protected. Please branch off and create a PR."
+  exit 1
+fi
+
+# --no-stash: keep changes from running lint-staged such as formatted files
+pnpm lint-staged --no-stash
