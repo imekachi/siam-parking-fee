@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { useEffect, useMemo, useState } from 'react'
+import { MouseEvent, useEffect, useMemo, useState } from 'react'
 import COLORS from '../config/colors'
 import { parkConfig } from '../config/park'
 import { calculateFee } from '../operations/fee'
@@ -10,7 +10,7 @@ interface ParkingInfoProps {
   parkId: string
   start: Date
   isLive?: boolean
-  onClickLiveButton?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onClickLiveButton?: (event: MouseEvent<HTMLButtonElement>) => void
 }
 
 function ParkingInfo(props: ParkingInfoProps) {

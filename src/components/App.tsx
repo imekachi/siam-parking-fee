@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { MouseEvent, useState } from 'react'
 import './App.css'
 import { useParkingState } from '../hooks/useParkingState'
 import FeeChart from './FeeChart'
@@ -12,7 +12,7 @@ function App() {
   const { parkingInfo, isLive, toggleIsLive, savePark, resetPark } =
     useParkingState()
 
-  const onChoosePark = (event: React.MouseEvent<HTMLElement>) => {
+  const onChoosePark = (event: MouseEvent<HTMLElement>) => {
     const element = event.target as HTMLElement
     const parkId = element.dataset.parkId as string
 
