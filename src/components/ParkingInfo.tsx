@@ -1,15 +1,16 @@
-import { useEffect, useMemo, useState } from 'react'
+import clsx from 'clsx'
+import { MouseEvent, useEffect, useMemo, useState } from 'react'
 import COLORS from '../config/colors'
-import './ParkInfo.css'
 import { parkConfig } from '../config/park'
 import { calculateFee } from '../operations/fee'
 import { formatDuration, getDuration, msToHrs } from '../utils/time'
+import './ParkInfo.css'
 
 interface ParkingInfoProps {
   parkId: string
   start: Date
   isLive?: boolean
-  onClickLiveButton?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onClickLiveButton?: (event: MouseEvent<HTMLButtonElement>) => void
 }
 
 function ParkingInfo(props: ParkingInfoProps) {
@@ -29,7 +30,7 @@ function ParkingInfo(props: ParkingInfoProps) {
     },
     // renderController is unused, but I'm using it to trigger re-rendering from setTimeout
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [feeRates, start, renderController]
+    [feeRates, start, renderController],
   )
 
   // live update fee/duration
@@ -49,7 +50,7 @@ function ParkingInfo(props: ParkingInfoProps) {
   return (
     <div className="parking-info-container" data-testid="ParkInfo">
       <button
-        className={`live-button${isLive ? ' -live' : ''}`}
+        className={clsx('live-button', isLive && '-live')}
         onClick={onClickLiveButton}
         data-testid="LiveButton"
       >
@@ -59,10 +60,12 @@ function ParkingInfo(props: ParkingInfoProps) {
         {name}
       </h2>
       <div className="park-info -start">
-        <span className="label">Check-in:</span> <strong>{start.toLocaleString()}</strong>
+        <span className="label">Check-in:</span>{' '}
+        <strong>{start.toLocaleString()}</strong>
       </div>
       <div className="park-info -duration">
-        <span className="label">Duration:</span> <strong>{formatDuration(duration)}</strong>
+        <span className="label">Duration:</span>{' '}
+        <strong>{formatDuration(duration)}</strong>
       </div>
       <div className="park-info -fee">
         <span className="label">Total: </span>

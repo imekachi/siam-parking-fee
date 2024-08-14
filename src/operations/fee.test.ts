@@ -1,7 +1,11 @@
+import { describe, expect, it } from 'vitest'
 import { calculateFee } from './fee'
 
 describe('calculateFee()', () => {
-  const specs = [
+  const specs: Array<{
+    input: Parameters<typeof calculateFee>
+    output: ReturnType<typeof calculateFee>
+  }> = [
     {
       input: [[{ hrs: 1, cost: 10 }], 1],
       output: 10,
@@ -108,13 +112,15 @@ describe('calculateFee()', () => {
   ]
   specs.forEach(({ input, output }) => {
     it(`should return ${JSON.stringify(output)}, when receive (${JSON.stringify(
-      input[0]
+      input[0],
     )}, ${JSON.stringify(input[1])})`, () => {
       expect(calculateFee(...input)).toBe(output)
     })
   })
 
-  const throwSpecs = [[], [null], [{}], [''], [1]]
+  const throwSpecs = [[], [null], [{}], [''], [1]] as unknown as Array<
+    Parameters<typeof calculateFee>
+  >
   throwSpecs.forEach((input) => {
     it(`should throw when receives ${JSON.stringify(input)}`, () => {
       expect(() => calculateFee(...input)).toThrow()
