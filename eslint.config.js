@@ -60,6 +60,7 @@ export default tseslint.config({
     'sort-imports': ['warn', { ignoreCase: true, ignoreDeclarationSort: true }],
     // Remove unused imports
     'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
     'unused-imports/no-unused-imports': 'warn',
     'unused-imports/no-unused-vars': [
       'warn',
