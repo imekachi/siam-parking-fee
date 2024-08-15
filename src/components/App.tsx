@@ -22,7 +22,12 @@ function App() {
 
   return (
     <main className="App">
-      <h1 className="header">Bike parking fee</h1>
+      <header className="header-section">
+        <h1 className="header">Bike parking fee</h1>
+        <p className="version-sub-header">
+          v{import.meta.env.VITE_APP_VERSION}
+        </p>
+      </header>
       <FeeChart />
 
       {parkingInfo ? (

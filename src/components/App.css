@@ -2,10 +2,21 @@
   --radius: 3px;
 }
 
+.header-section {
+  margin-bottom: 2rem;
+}
+
 .header {
   font-size: 21px;
   text-align: center;
-  margin: 0 0 24px;
+  margin: 0;
+}
+
+.version-sub-header {
+  font-size: 11px;
+  text-align: center;
+  margin-top: 4px;
+  opacity: 0.64;
 }
 
 .chart-container {
