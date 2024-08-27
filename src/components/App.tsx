@@ -22,9 +22,9 @@ function App() {
 
   return (
     <main className="App">
-      <header className="header-section">
-        <h1 className="header">Bike parking fee</h1>
-        <p className="version-sub-header">
+      <header className="mb-8">
+        <h1 className="m-0 text-center text-xl">Bike parking fee</h1>
+        <p className="mt-1 text-center text-xs opacity-65">
           v{import.meta.env.VITE_APP_VERSION}
         </p>
       </header>
