@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from 'react'
+import { MouseEvent, useRef, useState } from 'react'
 import './App.css'
 import { useParkingState } from '../hooks/useParkingState'
 import EditButton from './EditButton.tsx'
@@ -12,6 +12,8 @@ function App() {
   const [isChoosingPark, setIsChoosingPark] = useState(false)
   const { parkingInfo, isLive, toggleIsLive, savePark, resetPark } =
     useParkingState()
+
+  const dialogRef = useRef<HTMLDialogElement>(null)
 
   const onChoosePark = (event: MouseEvent<HTMLElement>) => {
     const element = event.target as HTMLElement
@@ -40,7 +42,7 @@ function App() {
             onClickLiveButton={toggleIsLive}
           />
           <div className="fixed bottom-16 left-0 right-0 z-10 flex items-center justify-center gap-4">
-            <EditButton onClick={() => console.log('edit time')} />
+            <EditButton onClick={() => dialogRef.current?.showModal()} />
             <ResetButton onClick={resetPark} />
           </div>
         </>
@@ -54,6 +56,25 @@ function App() {
           onClickBackdrop={() => setIsChoosingPark(false)}
         />
       )}
+
+      <dialog
+        ref={dialogRef}
+        className="w-full space-y-4 rounded-lg bg-white p-5 pb-6"
+      >
+        <h1 className="my-2 text-xl font-bold text-center">Change Check-in Time</h1>
+        <p>content</p>
+        <div className="flex justify-center gap-2">
+          <button
+            className="w-28 rounded-full bg-yellow py-1.5 text-center"
+            onClick={() => dialogRef.current?.close()}
+          >
+            Close
+          </button>
+          <button className="w-28 rounded-full bg-yellow py-1 text-center">
+            Confirm
+          </button>
+        </div>
+      </dialog>
     </main>
   )
 }
