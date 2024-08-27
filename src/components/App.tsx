@@ -1,6 +1,7 @@
 import { MouseEvent, useState } from 'react'
 import './App.css'
 import { useParkingState } from '../hooks/useParkingState'
+import EditButton from './EditButton.tsx'
 import FeeChart from './FeeChart'
 import ParkButton from './ParkButton'
 import ParkingInfo from './ParkingInfo'
@@ -38,7 +39,10 @@ function App() {
             isLive={isLive}
             onClickLiveButton={toggleIsLive}
           />
-          <ResetButton onClick={resetPark} />
+          <div className="fixed bottom-16 left-0 right-0 z-10 flex items-center justify-center gap-4">
+            <EditButton onClick={() => console.log('edit time')} />
+            <ResetButton onClick={resetPark} />
+          </div>
         </>
       ) : (
         <ParkButton onClick={() => setIsChoosingPark(true)} />
