@@ -12,6 +12,8 @@ import ResetButton from './ResetButton'
 function App() {
   const [isChoosingPark, setIsChoosingPark] = useState(false)
   const [isClosingDialog, setIsClosingDialog] = useState(false)
+  // TODO: set the default check-in time to the start time
+  const [checkInTime, setcheckInTime] = useState('00:00')
   const { parkingInfo, isLive, toggleIsLive, savePark, resetPark } =
     useParkingState()
 
@@ -30,9 +32,14 @@ function App() {
     setTimeout(() => {
       dialogRef.current?.close()
       setIsClosingDialog(false)
+      setcheckInTime('00:00')
     }, 200) // Match the duration of the slide-down animation
   }
 
+  const confirmEditTime = () => {
+    closeDialog()
+    console.log('Edit check-in time:', checkInTime)
+  }
   return (
     <main className="App">
       <header className="mb-8">
@@ -70,20 +77,35 @@ function App() {
       <dialog
         ref={dialogRef}
         className={clsx(
-          'mx-2 mb-0 mt-auto w-auto max-w-none space-y-4 rounded-t-lg bg-gray-600 p-5 pb-6 md:mx-auto md:w-96',
+          'mx-2 mb-0 mt-auto w-auto max-w-none rounded-t-lg bg-gray-600 px-6 pb-24 pt-8 md:mx-auto md:w-96',
           isClosingDialog ? 'animate-slide-down' : 'animate-slide-up',
         )}
       >
-        <h1 className="mb-4 mt-2 text-white">Change Check-in Time</h1>
-        <div></div>
+        <h1 className="mx-4 mb-10 text-center text-xl font-semibold text-white">
+          Change Check-in Time
+        </h1>
+        <div className="mb-8 flex justify-center">
+          <input
+            type="time"
+            id="checkInTime"
+            name="checkInTime"
+            value={checkInTime}
+            onChange={(e) => setcheckInTime(e.target.value)}
+            className="w-44 rounded-lg border border-gray-600 bg-gray-400 p-4 text-2xl text-gray-100 focus-visible:border-amber-100 focus-visible:ring-amber-100"
+            required
+          />
+        </div>
         <div className="flex w-full justify-center gap-2">
           <button
-            className="w-full rounded-full py-1.5 text-center font-semibold text-gray-100 hover:bg-gray-400"
+            className="w-full rounded-full py-2.5 text-center font-semibold text-gray-100 hover:bg-gray-400"
             onClick={closeDialog}
           >
             Close
           </button>
-          <button className="w-full rounded-full py-1.5 text-center font-semibold text-gray-100 hover:bg-gray-400">
+          <button
+            className="w-full rounded-full py-2.5 text-center font-semibold text-yellow hover:bg-gray-400"
+            onClick={confirmEditTime}
+          >
             Confirm
           </button>
         </div>
