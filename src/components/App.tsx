@@ -59,9 +59,11 @@ function App() {
 
       <dialog
         ref={dialogRef}
-        className="w-full space-y-4 rounded-lg bg-white p-5 pb-6"
+        className="mx-2 mb-0 mt-auto w-auto max-w-none animate-slide-up space-y-4 rounded-t-lg bg-white p-5 pb-6"
       >
-        <h1 className="my-2 text-xl font-bold text-center">Change Check-in Time</h1>
+        <h1 className="my-2 text-center text-xl font-bold">
+          Change Check-in Time
+        </h1>
         <p>content</p>
         <div className="flex justify-center gap-2">
           <button
