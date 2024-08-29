@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import { MouseEvent, useRef, useState } from 'react'
 import './App.css'
 import { useParkingState } from '../hooks/useParkingState'
@@ -10,6 +11,7 @@ import ResetButton from './ResetButton'
 
 function App() {
   const [isChoosingPark, setIsChoosingPark] = useState(false)
+  const [isClosingDialog, setIsClosingDialog] = useState(false)
   const { parkingInfo, isLive, toggleIsLive, savePark, resetPark } =
     useParkingState()
 
@@ -23,6 +25,14 @@ function App() {
     savePark(parkId)
   }
 
+  const closeDialog = () => {
+    setIsClosingDialog(true)
+    setTimeout(() => {
+      dialogRef.current?.close()
+      setIsClosingDialog(false)
+    }, 200) // Match the duration of the slide-down animation
+  }
+  
   return (
     <main className="App">
       <header className="mb-8">
@@ -59,7 +69,7 @@ function App() {
 
       <dialog
         ref={dialogRef}
-        className="mx-2 mb-0 mt-auto w-auto max-w-none animate-slide-up space-y-4 rounded-t-lg bg-white p-5 pb-6"
+        className={clsx('mx-2 mb-0 mt-auto w-auto max-w-none space-y-4 rounded-t-lg bg-white p-5 pb-6', isClosingDialog ? 'animate-slide-down' : 'animate-slide-up')}
       >
         <h1 className="my-2 text-center text-xl font-bold">
           Change Check-in Time
@@ -68,7 +78,7 @@ function App() {
         <div className="flex justify-center gap-2">
           <button
             className="w-28 rounded-full bg-yellow py-1.5 text-center"
-            onClick={() => dialogRef.current?.close()}
+            onClick={closeDialog}
           >
             Close
           </button>
