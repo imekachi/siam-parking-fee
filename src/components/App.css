@@ -41,3 +41,9 @@
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
+
+dialog::backdrop {
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.2s;
+}
