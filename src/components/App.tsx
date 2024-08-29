@@ -32,7 +32,7 @@ function App() {
       setIsClosingDialog(false)
     }, 200) // Match the duration of the slide-down animation
   }
-  
+
   return (
     <main className="App">
       <header className="mb-8">
@@ -69,20 +69,21 @@ function App() {
 
       <dialog
         ref={dialogRef}
-        className={clsx('mx-2 mb-0 mt-auto w-auto max-w-none space-y-4 rounded-t-lg bg-white p-5 pb-6', isClosingDialog ? 'animate-slide-down' : 'animate-slide-up')}
+        className={clsx(
+          'mx-2 mb-0 mt-auto w-auto max-w-none space-y-4 rounded-t-lg bg-gray-600 p-5 pb-6 md:mx-auto md:w-96',
+          isClosingDialog ? 'animate-slide-down' : 'animate-slide-up',
+        )}
       >
-        <h1 className="my-2 text-center text-xl font-bold">
-          Change Check-in Time
-        </h1>
-        <p>content</p>
-        <div className="flex justify-center gap-2">
+        <h1 className="mb-4 mt-2 text-white">Change Check-in Time</h1>
+        <div></div>
+        <div className="flex w-full justify-center gap-2">
           <button
-            className="w-28 rounded-full bg-yellow py-1.5 text-center"
+            className="w-full rounded-full py-1.5 text-center font-semibold text-gray-100 hover:bg-gray-400"
             onClick={closeDialog}
           >
             Close
           </button>
-          <button className="w-28 rounded-full bg-yellow py-1 text-center">
+          <button className="w-full rounded-full py-1.5 text-center font-semibold text-gray-100 hover:bg-gray-400">
             Confirm
           </button>
         </div>
