@@ -1,10 +1,8 @@
-import { MouseEventHandler } from 'react'
+import { ComponentPropsWithoutRef } from 'react'
 
-interface ResetButtonProps {
-  onClick?: MouseEventHandler<HTMLButtonElement>
-}
+type ResetButtonProps = Pick<ComponentPropsWithoutRef<'button'>, 'onClick'>
 
-export default function ResetButton({ onClick }: ResetButtonProps) {
+export const ResetButton = ({ onClick }: ResetButtonProps) => {
   return (
     <button
       className="flex h-16 w-32 items-center justify-center rounded-full bg-yellow font-bold uppercase leading-none text-black"
