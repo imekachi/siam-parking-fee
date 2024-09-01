@@ -9,13 +9,27 @@ import ParkingInfo from './ParkingInfo'
 import ParkSelectionPopup from './ParkSelectionPopup'
 import ResetButton from './ResetButton'
 
+const getTimeStringFromDate = (start: Date | undefined) => {
+  if (!start) return ''
+
+  // input type="time" requires a string in the format "HH:mm", "HH:mm:ss"
+  return start.toLocaleTimeString('en', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  })
+}
+
+const getDateFromTimeString = (timeString: string) => {
+  return new Date(new Date().toDateString() + ' ' + timeString)
+}
+
 function App() {
   const [isChoosingPark, setIsChoosingPark] = useState(false)
-  const [isClosingDialog, setIsClosingDialog] = useState(false)
-  // TODO: set the default check-in time to the start time
-  const [checkInTime, setcheckInTime] = useState('00:00')
   const { parkingInfo, isLive, toggleIsLive, savePark, resetPark } =
     useParkingState()
+  const [isClosingDialog, setIsClosingDialog] = useState(false)
+  const [checkInTime, setCheckInTime] = useState('')
 
   const dialogRef = useRef<HTMLDialogElement>(null)
 
@@ -27,18 +41,26 @@ function App() {
     savePark(parkId)
   }
 
+  const showDialog = () => {
+    setCheckInTime(getTimeStringFromDate(parkingInfo?.start))
+    dialogRef.current?.showModal()
+  }
+
   const closeDialog = () => {
     setIsClosingDialog(true)
     setTimeout(() => {
       dialogRef.current?.close()
       setIsClosingDialog(false)
-      setcheckInTime('00:00')
     }, 200) // Match the duration of the slide-down animation
   }
 
   const confirmEditTime = () => {
+    if (!parkingInfo) {
+      alert('No parking info found')
+      return
+    }
+    savePark(parkingInfo.parkId, getDateFromTimeString(checkInTime))
     closeDialog()
-    console.log('Edit check-in time:', checkInTime)
   }
   return (
     <main className="App">
@@ -59,7 +81,7 @@ function App() {
             onClickLiveButton={toggleIsLive}
           />
           <div className="fixed bottom-16 left-0 right-0 z-10 flex items-center justify-center gap-4">
-            <EditButton onClick={() => dialogRef.current?.showModal()} />
+            <EditButton onClick={showDialog} disabled={!parkingInfo} />
             <ResetButton onClick={resetPark} />
           </div>
         </>
@@ -90,7 +112,7 @@ function App() {
             id="checkInTime"
             name="checkInTime"
             value={checkInTime}
-            onChange={(e) => setcheckInTime(e.target.value)}
+            onChange={(e) => setCheckInTime(e.target.value)}
             className="w-44 rounded-lg border border-gray-600 bg-gray-400 p-4 text-2xl text-gray-100 focus-visible:border-amber-100 focus-visible:ring-amber-100"
             required
           />
