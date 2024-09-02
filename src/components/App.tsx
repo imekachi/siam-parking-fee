@@ -1,12 +1,14 @@
-import clsx from 'clsx'
-import { MouseEvent, useRef, useState } from 'react'
+import { ElementRef, useRef, useState } from 'react'
 import './App.css'
 import { useParkingState } from '../hooks/useParkingState'
+import { EditTimeDialog } from './EditTimeDialog.tsx'
 import { EditButton } from './EditButton.tsx'
 import FeeChart from './FeeChart'
 import ParkButton from './ParkButton'
 import ParkingInfo from './ParkingInfo'
-import ParkSelectionPopup from './ParkSelectionPopup'
+import ParkSelectionPopup, {
+  ParkSelectionPopupProps,
+} from './ParkSelectionPopup'
 import { ResetButton } from './ResetButton'
 
 const getTimeStringFromDate = (start: Date | undefined) => {
@@ -21,7 +23,7 @@ const getTimeStringFromDate = (start: Date | undefined) => {
 }
 
 const getDateFromTimeString = (timeString: string) => {
-  return new Date(new Date().toDateString() + ' ' + timeString)
+  return new Date(`${new Date().toDateString()} ${timeString}`)
 }
 
 function App() {
@@ -31,9 +33,9 @@ function App() {
   const [isClosingDialog, setIsClosingDialog] = useState(false)
   const [checkInTime, setCheckInTime] = useState('')
 
-  const dialogRef = useRef<HTMLDialogElement>(null)
+  const dialogRef = useRef<ElementRef<typeof EditTimeDialog> | null>(null)
 
-  const onChoosePark = (event: MouseEvent<HTMLElement>) => {
+  const onChoosePark: ParkSelectionPopupProps['onChoosePark'] = (event) => {
     const element = event.target as HTMLElement
     const parkId = element.dataset.parkId as string
 
@@ -62,6 +64,7 @@ function App() {
     savePark(parkingInfo.parkId, getDateFromTimeString(checkInTime))
     closeDialog()
   }
+
   return (
     <main className="App">
       <header className="mb-8">
@@ -96,42 +99,14 @@ function App() {
         />
       )}
 
-      <dialog
+      <EditTimeDialog
         ref={dialogRef}
-        className={clsx(
-          'mx-2 mb-0 mt-auto w-auto max-w-none rounded-t-lg bg-gray-600 px-6 pb-24 pt-8 md:mx-auto md:w-96',
-          isClosingDialog ? 'animate-slide-down' : 'animate-slide-up',
-        )}
-      >
-        <h1 className="mx-4 mb-10 text-center text-xl font-semibold text-white">
-          Change Check-in Time
-        </h1>
-        <div className="mb-8 flex justify-center">
-          <input
-            type="time"
-            id="checkInTime"
-            name="checkInTime"
-            value={checkInTime}
-            onChange={(e) => setCheckInTime(e.target.value)}
-            className="w-44 rounded-lg border border-gray-600 bg-gray-400 p-4 text-2xl text-gray-100 focus-visible:border-amber-100 focus-visible:ring-amber-100"
-            required
-          />
-        </div>
-        <div className="flex w-full justify-center gap-2">
-          <button
-            className="w-full rounded-full py-2.5 text-center font-semibold text-gray-100 hover:bg-gray-400"
-            onClick={closeDialog}
-          >
-            Close
-          </button>
-          <button
-            className="w-full rounded-full py-2.5 text-center font-semibold text-yellow hover:bg-gray-400"
-            onClick={confirmEditTime}
-          >
-            Confirm
-          </button>
-        </div>
-      </dialog>
+        isClosingDialog={isClosingDialog}
+        checkInTime={checkInTime}
+        setCheckInTime={setCheckInTime}
+        closeDialog={closeDialog}
+        confirmEditTime={confirmEditTime}
+      />
     </main>
   )
 }
