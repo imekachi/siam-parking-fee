@@ -10,7 +10,7 @@ export const ResetButton = (props: ResetButtonProps) => {
 
   return (
     <button
-      className="flex h-16 w-32 items-center justify-center rounded-full bg-yellow font-bold uppercase leading-none text-black"
+      className="flex h-16 w-32 items-center justify-center rounded-full bg-amber-300 font-bold uppercase leading-none text-black"
       onClick={onClick}
       data-testid="ResetButton"
     >

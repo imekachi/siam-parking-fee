@@ -1,8 +1,8 @@
 import { ElementRef, useRef, useState } from 'react'
 import './App.css'
 import { useParkingState } from '../hooks/useParkingState'
-import { EditTimeDialog } from './EditTimeDialog.tsx'
 import { EditButton } from './EditButton.tsx'
+import { EditTimeDialog } from './EditTimeDialog.tsx'
 import FeeChart from './FeeChart'
 import ParkButton from './ParkButton'
 import ParkingInfo from './ParkingInfo'
@@ -23,7 +23,8 @@ const getTimeStringFromDate = (start: Date | undefined) => {
 }
 
 const getDateFromTimeString = (timeString: string) => {
-  return new Date(`${new Date().toDateString()} ${timeString}`)
+  const todayDateString = new Date().toDateString()
+  return new Date(`${todayDateString} ${timeString}`)
 }
 
 function App() {

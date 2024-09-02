@@ -8,6 +8,7 @@ export type DialogEditTimeProps = {
   closeDialog: () => void
   confirmEditTime: () => void
 }
+
 export const EditTimeDialog = forwardRef<
   HTMLDialogElement,
   DialogEditTimeProps
@@ -24,7 +25,7 @@ export const EditTimeDialog = forwardRef<
     <dialog
       ref={ref}
       className={clsx(
-        'mx-2 mb-0 mt-auto w-auto max-w-none rounded-t-lg bg-gray-600 px-6 pb-24 pt-8 md:mx-auto md:w-96',
+        'mx-2 mb-0 mt-auto w-auto max-w-none rounded-t-lg bg-neutral-900 px-6 pb-24 pt-8 md:mx-auto md:w-96',
         isClosingDialog ? 'animate-slide-down' : 'animate-slide-up',
       )}
     >
@@ -37,20 +38,20 @@ export const EditTimeDialog = forwardRef<
           id="checkInTime"
           name="checkInTime"
           value={checkInTime}
-          onChange={(e) => setCheckInTime(e.target.value)}
-          className="w-44 rounded-lg border border-gray-600 bg-gray-400 p-4 text-2xl text-gray-100 focus-visible:border-amber-100 focus-visible:ring-amber-100"
+          onChange={(event) => setCheckInTime(event.target.value)}
+          className="w-44 rounded-lg border border-neutral-900 bg-neutral-800 p-4 text-2xl text-neutral-300 focus-visible:border-amber-100 focus-visible:ring-amber-100"
           required
         />
       </div>
       <div className="flex w-full justify-center gap-2">
         <button
-          className="w-full rounded-full py-2.5 text-center font-semibold text-gray-100 hover:bg-gray-400"
+          className="w-full rounded-full py-2.5 text-center font-semibold text-neutral-300 hover:bg-neutral-800"
           onClick={closeDialog}
         >
           Close
         </button>
         <button
-          className="w-full rounded-full py-2.5 text-center font-semibold text-yellow hover:bg-gray-400"
+          className="w-full rounded-full py-2.5 text-center font-semibold text-amber-300 hover:bg-neutral-800"
           onClick={confirmEditTime}
         >
           Confirm

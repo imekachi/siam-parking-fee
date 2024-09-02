@@ -10,7 +10,7 @@ export const EditButton = (props: EditButtonProps) => {
   
   return (
     <button
-      className="flex h-16 w-16 items-center justify-center rounded-full bg-yellow text-black"
+      className="flex h-16 w-16 items-center justify-center rounded-full bg-amber-300 text-black"
       onClick={onClick}
       disabled={disabled}
     >
