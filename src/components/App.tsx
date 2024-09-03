@@ -1,6 +1,8 @@
 import { ElementRef, useRef, useState } from 'react'
 import './App.css'
 import { useParkingState } from '../hooks/useParkingState'
+import { getDateFromTimeString } from '../utils/getDateFromTimeString.ts'
+import { getTimeStringFromDate } from '../utils/getTimeStringFromDate.ts'
 import { EditButton } from './EditButton.tsx'
 import { EditTimeDialog } from './EditTimeDialog.tsx'
 import FeeChart from './FeeChart'
@@ -10,22 +12,6 @@ import ParkSelectionPopup, {
   ParkSelectionPopupProps,
 } from './ParkSelectionPopup'
 import { ResetButton } from './ResetButton'
-
-const getTimeStringFromDate = (start: Date | undefined) => {
-  if (!start) return ''
-
-  // input type="time" requires a string in the format "HH:mm", "HH:mm:ss"
-  return start.toLocaleTimeString('en', {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false,
-  })
-}
-
-const getDateFromTimeString = (timeString: string) => {
-  const todayDateString = new Date().toDateString()
-  return new Date(`${todayDateString} ${timeString}`)
-}
 
 function App() {
   const [isChoosingPark, setIsChoosingPark] = useState(false)
