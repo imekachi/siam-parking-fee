@@ -1,10 +1,7 @@
-import { ElementRef, useRef, useState } from 'react'
+import { useState } from 'react'
 import './App.css'
 import { useParkingState } from '../hooks/useParkingState'
-import { getDateFromTimeString } from '../utils/getDateFromTimeString.ts'
-import { getTimeStringFromDate } from '../utils/getTimeStringFromDate.ts'
 import { EditButton } from './EditButton.tsx'
-import { EditTimeDialog } from './EditTimeDialog.tsx'
 import FeeChart from './FeeChart'
 import ParkButton from './ParkButton'
 import ParkingInfo from './ParkingInfo'
@@ -17,10 +14,6 @@ function App() {
   const [isChoosingPark, setIsChoosingPark] = useState(false)
   const { parkingInfo, isLive, toggleIsLive, savePark, resetPark } =
     useParkingState()
-  const [isClosingDialog, setIsClosingDialog] = useState(false)
-  const [checkInTime, setCheckInTime] = useState('')
-
-  const dialogRef = useRef<ElementRef<typeof EditTimeDialog> | null>(null)
 
   const onChoosePark: ParkSelectionPopupProps['onChoosePark'] = (event) => {
     const element = event.target as HTMLElement
@@ -28,28 +21,6 @@ function App() {
 
     setIsChoosingPark(false)
     savePark(parkId)
-  }
-
-  const showDialog = () => {
-    setCheckInTime(getTimeStringFromDate(parkingInfo?.start))
-    dialogRef.current?.showModal()
-  }
-
-  const closeDialog = () => {
-    setIsClosingDialog(true)
-    setTimeout(() => {
-      dialogRef.current?.close()
-      setIsClosingDialog(false)
-    }, 200) // Match the duration of the slide-down animation
-  }
-
-  const confirmEditTime = () => {
-    if (!parkingInfo) {
-      alert('No parking info found')
-      return
-    }
-    savePark(parkingInfo.parkId, getDateFromTimeString(checkInTime))
-    closeDialog()
   }
 
   return (
@@ -71,7 +42,11 @@ function App() {
             onClickLiveButton={toggleIsLive}
           />
           <div className="fixed bottom-16 left-0 right-0 z-10 flex items-center justify-center gap-4">
-            <EditButton onClick={showDialog} disabled={!parkingInfo} />
+            <EditButton
+              parkingInfo={parkingInfo}
+              savePark={savePark}
+              disabled={!parkingInfo}
+            />
             <ResetButton onClick={resetPark} />
           </div>
         </>
@@ -85,15 +60,6 @@ function App() {
           onClickBackdrop={() => setIsChoosingPark(false)}
         />
       )}
-
-      <EditTimeDialog
-        ref={dialogRef}
-        isClosingDialog={isClosingDialog}
-        checkInTime={checkInTime}
-        setCheckInTime={setCheckInTime}
-        closeDialog={closeDialog}
-        confirmEditTime={confirmEditTime}
-      />
     </main>
   )
 }
