@@ -41,7 +41,7 @@ function App() {
             isLive={isLive}
             onClickLiveButton={toggleIsLive}
           />
-          <div className="fixed bottom-16 left-0 right-0 z-10 flex items-center justify-center gap-4">
+          <div className="fixed inset-x-0 bottom-16 z-10 flex items-center justify-center gap-4">
             <EditButton
               parkingInfo={parkingInfo}
               savePark={savePark}
