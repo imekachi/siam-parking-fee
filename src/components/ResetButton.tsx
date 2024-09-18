@@ -1,19 +1,19 @@
-import { MouseEventHandler } from 'react'
-import COLORS from '../config/colors'
+import { FloatingButton, FloatingButtonProps } from './FloatingButton.tsx'
+import { Icon } from './Icon.tsx'
 
-interface ResetButtonProps {
-  onClick?: MouseEventHandler<HTMLButtonElement>
-}
+export type ResetButtonProps = Pick<FloatingButtonProps, 'onClick'>
 
-export default function ResetButton({ onClick }: ResetButtonProps) {
+export const ResetButton = (props: ResetButtonProps) => {
+  const { onClick } = props
+
   return (
-    <button
-      className="floating-button"
-      style={{ backgroundColor: COLORS.YELLOW }}
+    <FloatingButton
+      className="w-32"
       onClick={onClick}
       data-testid="ResetButton"
     >
-      <i className="material-icons">delete</i>Reset
-    </button>
+      <Icon className="mr-1" name="delete" />
+      Reset
+    </FloatingButton>
   )
 }

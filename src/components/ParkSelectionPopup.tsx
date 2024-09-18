@@ -2,7 +2,7 @@ import { MouseEventHandler } from 'react'
 import { parkConfigEntries } from '../config/park'
 import './ParkSelectionPopup.css'
 
-interface ParkSelectionPopupProps {
+export type ParkSelectionPopupProps = {
   onChoosePark?: MouseEventHandler<HTMLLIElement>
   onClickBackdrop?: MouseEventHandler<HTMLDivElement>
 }

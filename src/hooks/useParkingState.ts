@@ -19,10 +19,10 @@ export function useParkingState() {
     setParkingInfo({ parkId, start })
   }, [setIsLive])
 
-  const savePark = (parkId: string) => {
+  const savePark = (parkId: string, start = new Date()) => {
     const newParkingInfo: ParkingInfoState = {
       parkId,
-      start: new Date(),
+      start,
     }
 
     // store it to storage

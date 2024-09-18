@@ -75,5 +75,8 @@ export default defineConfig(() => {
     define: {
       'import.meta.env.VITE_APP_VERSION': `"${appVersion}"`,
     },
+    test: {
+      globalSetup: './vitest-setup.ts',
+    },
   }
 })
