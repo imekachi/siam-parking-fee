@@ -1,20 +1,19 @@
-import { ComponentPropsWithoutRef } from 'react'
+import { FloatingButton, FloatingButtonProps } from './FloatingButton.tsx'
+import { Icon } from './Icon.tsx'
 
-export type ResetButtonProps = Pick<
-  ComponentPropsWithoutRef<'button'>,
-  'onClick'
->
+export type ResetButtonProps = Pick<FloatingButtonProps, 'onClick'>
 
 export const ResetButton = (props: ResetButtonProps) => {
   const { onClick } = props
 
   return (
-    <button
-      className="flex h-16 w-32 items-center justify-center rounded-full bg-amber-300 font-bold uppercase leading-none text-black"
+    <FloatingButton
+      className="w-32"
       onClick={onClick}
       data-testid="ResetButton"
     >
-      <i className="material-icons mr-1">delete</i>Reset
-    </button>
+      <Icon className="mr-1" name="delete" />
+      Reset
+    </FloatingButton>
   )
 }

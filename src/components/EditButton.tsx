@@ -1,11 +1,10 @@
-import { ComponentPropsWithoutRef, ElementRef, useRef, useState } from 'react'
+import { ElementRef, useRef, useState } from 'react'
 import { useParkingState } from '../hooks/useParkingState.ts'
 import { EditTimeDialog, EditTimeDialogProps } from './EditTimeDialog.tsx'
+import { FloatingButton, FloatingButtonProps } from './FloatingButton.tsx'
+import { Icon } from './Icon.tsx'
 
-export type EditButtonProps = Pick<
-  ComponentPropsWithoutRef<'button'>,
-  'disabled'
-> &
+export type EditButtonProps = Pick<FloatingButtonProps, 'disabled'> &
   Pick<ReturnType<typeof useParkingState>, 'parkingInfo' | 'savePark'>
 
 export const EditButton = (props: EditButtonProps) => {
@@ -43,14 +42,9 @@ export const EditButton = (props: EditButtonProps) => {
 
   return (
     <>
-      <button
-        className="flex h-16 w-16 items-center justify-center rounded-full bg-amber-300 text-black"
-        onClick={showDialog}
-        disabled={disabled}
-      >
-        <i className="material-icons">edit</i>
-      </button>
-
+      <FloatingButton onClick={showDialog} disabled={disabled}>
+        <Icon name="edit" />
+      </FloatingButton>
       <EditTimeDialog
         ref={dialogRef}
         initialCheckInTime={parkingInfo?.start}
