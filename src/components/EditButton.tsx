@@ -1,4 +1,4 @@
-import { ElementRef, useRef, useState } from 'react'
+import { ComponentRef, useRef, useState } from 'react'
 import { useParkingState } from '../hooks/useParkingState.ts'
 import { EditTimeDialog, EditTimeDialogProps } from './EditTimeDialog.tsx'
 import { FloatingButton, FloatingButtonProps } from './FloatingButton.tsx'
@@ -13,7 +13,7 @@ export const EditButton = (props: EditButtonProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [isAnimatingOut, setIsAnimatingOut] = useState(false)
 
-  const dialogRef = useRef<ElementRef<typeof EditTimeDialog> | null>(null)
+  const dialogRef = useRef<ComponentRef<typeof EditTimeDialog> | null>(null)
 
   const showDialog = () => {
     dialogRef.current?.showModal()

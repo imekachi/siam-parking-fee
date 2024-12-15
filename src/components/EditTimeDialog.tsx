@@ -1,10 +1,11 @@
 import clsx from 'clsx'
-import { FormEventHandler, forwardRef, useState } from 'react'
+import { FormEventHandler, useState } from 'react'
 import { ParkingInfoState } from '../hooks/useParkingState.ts'
 import { getDateFromTimeString } from '../utils/getDateFromTimeString.ts'
 import { getTimeStringFromDate } from '../utils/getTimeStringFromDate.ts'
+import { RefProp } from '../utils/react-types.ts'
 
-export type EditTimeDialogProps = {
+export type EditTimeDialogProps = RefProp<HTMLDialogElement> & {
   isOpen: boolean
   isAnimatingOut: boolean
   initialCheckInTime?: ParkingInfoState['start']
@@ -12,12 +13,15 @@ export type EditTimeDialogProps = {
   onSubmit?: (updatedTime: Date) => void
 }
 
-export const EditTimeDialog = forwardRef<
-  HTMLDialogElement,
-  EditTimeDialogProps
->((props, ref) => {
-  const { isOpen, isAnimatingOut, initialCheckInTime, onCancel, onSubmit } =
-    props
+export const EditTimeDialog = (props: EditTimeDialogProps) => {
+  const {
+    ref,
+    isOpen,
+    isAnimatingOut,
+    initialCheckInTime,
+    onCancel,
+    onSubmit,
+  } = props
 
   const [isPrevOpen, setIsPrevOpen] = useState(isOpen)
   const [checkInTime, setCheckInTime] = useState(
@@ -74,6 +78,4 @@ export const EditTimeDialog = forwardRef<
       </form>
     </dialog>
   )
-})
-
-EditTimeDialog.displayName = 'EditTimeDialog'
+}
